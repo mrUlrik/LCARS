@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Library Computer Access/Retrieval System</title>
+</head>
+<body>
+    <main role="main" class="container">
+        @if (ViewBag.IsInternetExplorer)
+        {
+            <div class="component col-6 mx-auto">
+                <h1>Incompatible Browser</h1>
+                <p class="text-serif">You are using Internet Explorer to access this page. Internet Explorer has since been replaced by Microsoft Edge and other browsers that support newer web standards.</p>
+            </div>
+        }
+        else
+        {
+            <div id="app">
+                Loading...
+            </div>
+        }
+    </main>
+</body>
+</html>
