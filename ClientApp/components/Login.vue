@@ -1,21 +1,15 @@
 ﻿<template>
-    <div class="text-center">
-        <div class="row py-5">
-            <div class="col-auto border-left"></div>
-            <div class="col-auto border-title">Console 01</div>
-            <div class="col border-fill"></div>
-            <div class="col-auto border-right-accent"></div>
+    <div class="container-fluid d-flex h-100 flex-column" style="background-color: #FFF">
+
+        <div class="row bg-faded fill d-flex justify-content-start">
+            <div class="col portlet-container portlet-dropzone">
+                <img src="images/ufop.png" height="300" />
+                <div class="display-1">The LCARS Computer Network</div>
+                <div class="h1">Authorized Access Only</div>
+                <div class="h1">Please report malfunctions to engineering staff on duty</div>
+            </div>
         </div>
-        <img src="images/United_Federation_of_Planets_002_by_Scharfshutze.jpg" height="300" />
-        <div class="display-1">The LCARS Computer Network</div>
-        <div class="h1">Authorized Access Only</div>
-        <div class="h1">Please report malfunctions to engineering staff on duty</div>
-        <div class="row py-5">
-            <div class="col-auto border-left-accent"></div>
-            <div class="col border-fill"></div>
-            <div class="col-auto border-title">{{hours}}:{{minutes}}</div>
-            <div class="col-auto border-right-accent"></div>
-        </div>
+
     </div>
 </template>
 
@@ -25,43 +19,42 @@
     }
 
     .h1 {
-        color: #9999CC;
+        color: #9999CD;
     }
 
-    .border-left {
-        background-color: #9999CC;
+    .lcars-border {
+        background-color: #9999CD;
+        height: 1.5rem;
+        margin-left: .3rem;
+    }
+
+    .lcars-border.left {
         border-radius: 1.5rem 0 0 1.5rem;
-        height: 1.5rem;
+        margin-left: 0;
     }
 
-    .border-left-accent {
-        background-color: #FF9900;
-        border-radius: 1.5rem 0 0 1.5rem;
-        height: 1.5rem;
-    }
-
-    .border-title {
-        color: #FF9900;
-        line-height: 1.5rem;
-        font-size: 1.9rem;
-        padding: 0;
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-
-    .border-fill {
-        background-color: #9999CC;
-        border-radius: 0;
-        height: 1.5rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-
-    .border-right-accent {
-        background-color: #FF9900;
+    .lcars-border.right {
         border-radius: 0 1.5rem 1.5rem 0;
         height: 1.5rem;
     }
+
+        .lcars-border.accent {
+            background-color: #FF9900;
+        }
+
+        .lcars-border.title {
+            color: #FF9900;
+            background-color: transparent;
+            line-height: 1.5rem;
+            font-size: 1.9rem;
+            padding: 0;
+        }
+
+    .lcars-border.fill {
+        border-radius: 0;
+        height: 1.5rem;
+    }
+
 </style>
 
 <script>

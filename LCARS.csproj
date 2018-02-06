@@ -19,11 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\images\" />
+    <None Include="wwwroot\images\United_Federation_of_Planets_002_by_Scharfshutze.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\United_Federation_of_Planets_002_by_Scharfshutze.jpg" />
+    <Folder Include="ClientApp\images\" />
   </ItemGroup>
 
   <Target Name="CustomCollectFiles">

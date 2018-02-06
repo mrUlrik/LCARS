@@ -5,22 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>Library Computer Access/Retrieval System</title>
+    <style type="text/css">
+        html,body{
+            height:100%;
+        }
+
+        .fill {
+            flex:1;
+        }
+    </style>
 </head>
 <body>
-    <main role="main" class="container">
-        @if (ViewBag.IsInternetExplorer)
-        {
-            <div class="component col-6 mx-auto">
-                <h1>Incompatible Browser</h1>
-                <p class="text-serif">You are using Internet Explorer to access this page. Internet Explorer has since been replaced by Microsoft Edge and other browsers that support newer web standards.</p>
-            </div>
-        }
-        else
-        {
-            <div id="app">
-                Loading...
-            </div>
-        }
-    </main>
+<div id="app">
+    Loading...
+</div>
+<main role="main" class="container-fluid h-100 d-flex flex-column">
+    @if (ViewBag.IsInternetExplorer)
+    {
+        <div class="component col-6 mx-auto">
+            <h1>Incompatible Browser</h1>
+            <p class="text-serif">You are using Internet Explorer to access this page. Internet Explorer has since been replaced by Microsoft Edge and other browsers that support newer web standards.</p>
+        </div>
+    }
+    else
+    {
+
+    }
+</main>
 </body>
 </html>
