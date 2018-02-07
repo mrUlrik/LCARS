@@ -1,58 +1,99 @@
 ﻿<template>
     <div class="container">
         <div class="row">
-            <div class="content-border left"></div>
-            <div class="content-border text">USS Raven - Database 63-528</div>
-
-            <div class="content-border right"></div>
-            <div class="content-border fill"></div>
+            <div class="col-auto lcars-dn"></div>
+            <div class="col lcars-content text-right">Welcome Crew Member Will</div>
         </div>
-        
+        <div class="row">
+            <div class="col-auto lcars-dn"></div>
+            <div class="col-auto lcars-caption">Content</div>
+            <div class="col lcars-fill"></div>
+            <div class="col-auto lcars-rt"></div>
+        </div>
+        <div class="row">
+            <div class="col lcars-divider"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto lcars-dn"></div>
+            <div class="col-auto lcars-caption">Content</div>
+            <div class="col lcars-fill"></div>
+            <div class="col-auto lcars-rt"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto lcars lcars-dn bg-normal"></div>
+            <div class="col-auto lcars-content">Welcome Crew Member Will</div>
+        </div>
+        <div class="row">
+            <div class="col lcars-divider"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto lcars-dn ">Info</div>
+            <div class="col-auto lcars-content">Data</div>
+        </div>
     </div>
 </template>
 
 <style scoped>
-    .container {
-        font-family: "Helvetica Ultra Compressed";
+
+    .lcars.bg-alert {
+        background-color: #ff0000;
     }
 
-    .container {
-        margin: 0 auto;
-        padding: 0 10px;
-        max-width: 1000px;
+    .lcars.bg-normal {
+        background-color: #00ff21;
     }
 
-    .row::before, .row::after {
-        display: table;
-        content: " ";
-        clear: both;
+    .lcars-dn {
+        width: 150px;
     }
 
-    .content-border {
-        background-color: #DD6644;
-        height: 1.6rem;
-        margin-left: .4rem;
-        float: left;
-    }
-
-    .content-border.left {
-        border-radius: 1.6rem 0 0 1.6rem;
-        width: 25px;
-    }
-
-    .content-border.right {
+    .lcars-rt {
+        width: 15px;
         border-radius: 0 1.6rem 1.6rem 0;
-        width: 25px;
     }
 
-    .content-border.fill {
-        float: unset;
-        width: 100%;
+    .lcars-fill {
+        margin-right: 15px;
     }
 
-    .content-border.text {
-        background-color: transparent;
-        color: #FFCC66;
-        
+    .lcars-caption {
+        line-height: 1.6rem;
+        text-transform: uppercase;
+    }
+
+    .lcars-divider {
+        height: 15px;
+    }
+
+    .lcars-content {
+
     }
 </style>
+
+<script>
+    export default {
+        data() {
+            return {
+                hours: '',
+                minutes: ''
+            }
+        },
+        beforeMount() {
+            this.updateDateTime();
+        },
+        mounted() {
+            setInterval(this.updateDateTime, 1000);
+        },
+        methods: {
+            updateDateTime() {
+                let now = new Date();
+
+                this.hours = this.getZeroPad(now.getHours());
+                this.minutes = this.getZeroPad(now.getMinutes());
+            },
+            getZeroPad(n) {
+                return (parseInt(n, 10) >= 10 ? '' : '0') + n;
+            }
+        }
+    }
+</script>
