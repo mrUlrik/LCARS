@@ -12,12 +12,12 @@ module.exports = (env) => {
     return [
         {
             entry: {
-                main: './ClientApp/boot.js',
-                vendor: [
+                main: './ClientApp/boot.js'
+                /*vendor: [
                     'bootstrap',
                     'popper.js',
                     'jquery'
-                ]
+                ]*/
             },
             devtool: isDevBuild ? 'eval-source-map' : false,
             output: {
@@ -29,7 +29,7 @@ module.exports = (env) => {
             module: {
                 rules: [
                     {
-                        test: /\.scss$/,
+                        test: /\.(css|scss)$/,
                         use: ExtractTextWebpackPlugin.extract({
                             fallback: 'style-loader',
                             use: ['css-loader', 'postcss-loader', 'sass-loader']
@@ -61,11 +61,11 @@ module.exports = (env) => {
             plugins: [
                 new ExtractTextWebpackPlugin(isDevBuild ? 'vendor.css' : 'vendor.[chunkhash].css'),
                 //new ExtractTextWebpackPlugin('vendor.css'),
-                new webpack.ProvidePlugin({
+                /*new webpack.ProvidePlugin({
                     $: 'jquery',
                     jQuery: 'jquery',
                     'window.jQuery': 'jquery'
-                }),
+                }),*/
                 new webpack.DefinePlugin({
                     'process.env': {
                         NODE_ENV: isDevBuild ? '"development"' : '"production"'

@@ -16,11 +16,11 @@ $secondary: #9999CC;
 $body-bg: $black;
 $body-color: $white;
 
-$font-family-sans-serif: "Swiss911BT-UltraCompressed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$font-size-base: 1.5rem;
+$font-family-sans-serif: "Helvetica Ultra Compressed", "Swiss911BT-UltraCompressed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-size-base: 1.6rem;
 
 @import "./node_modules/bootstrap/scss/bootstrap";
 
-body {
+h1, .title {
     text-transform: uppercase;
 }

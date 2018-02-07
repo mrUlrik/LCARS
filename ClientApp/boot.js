@@ -1,5 +1,6 @@
 ﻿import './scss/fonts.scss';
-import './scss/lcar.scss';
+//import './scss/lcar.scss';
+import 'normalize.css';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);

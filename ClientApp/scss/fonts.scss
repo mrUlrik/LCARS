@@ -5,3 +5,11 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: "Helvetica Ultra Compressed";
+    src: url('../fonts/Helvetica-UltraCompressed.eot');
+    src: url('../fonts/Helvetica-UltraCompressed.eot?#iefix') format("embedded-opentype"), url("../fonts/Helvetica-UltraCompressed.woff2") format("woff2"), url("../fonts/Helvetica-UltraCompressed.woff") format("woff"), url("../fonts/Helvetica-UltraCompressed.ttf") format("truetype"), url("../fonts/Helvetica-UltraCompressed.svg#Helvetica-UltraCompressed") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}

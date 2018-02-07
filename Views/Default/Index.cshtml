@@ -1,36 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>Library Computer Access/Retrieval System</title>
     <style type="text/css">
-        html,body{
-            height:100%;
-        }
-
-        .fill {
-            flex:1;
+        body {
+            background-color: #000;
         }
     </style>
 <link href="/dist/vendor.css" rel="stylesheet"></head>
 <body>
-<div id="app">
-    Loading...
-</div>
-<main role="main" class="container-fluid h-100 d-flex flex-column">
+<div role="main" id="app">
     @if (ViewBag.IsInternetExplorer)
     {
-        <div class="component col-6 mx-auto">
+        <div class="col-6 mx-auto">
             <h1>Incompatible Browser</h1>
-            <p class="text-serif">You are using Internet Explorer to access this page. Internet Explorer has since been replaced by Microsoft Edge and other browsers that support newer web standards.</p>
+            <p>You are using Internet Explorer to access this page. Internet Explorer has since been replaced by Microsoft Edge and other browsers that support newer web standards.</p>
         </div>
     }
-    else
-    {
-
-    }
-</main>
+</div>
 <script type="text/javascript" src="/dist/vendor.js"></script><script type="text/javascript" src="/dist/main.js"></script></body>
 </html>
