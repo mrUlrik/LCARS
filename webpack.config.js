@@ -23,7 +23,7 @@ module.exports = (env) => {
             output: {
                 path: path.resolve(__dirname, './wwwroot/dist'),
                 publicPath: '/dist/',
-                filename: isDevBuild ? '[name].js' : '[name].[chunkhash].js'
+                filename: isDevBuild ? 'js/[name].js' : 'js/[name].[chunkhash].js'
                 //filename: '[name].js'
             },
             module: {
@@ -51,7 +51,26 @@ module.exports = (env) => {
                     },
                     {
                         test: /\.(eot|svg|ttf|woff|woff2)$/,
-                        loader: 'file-loader'
+                        use: [
+                            {
+                                loader: 'file-loader',
+                                options: {
+                                    name: isDevBuild ? 'fonts/[name].[ext]' : 'fonts/[hash]-[name].[ext]'
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        test: /\.(png)$/,
+                        use: [
+                            {
+                                loader: 'url-loader',
+                                options: {
+                                    limit: 8000,
+                                    name: isDevBuild ? 'images/[name].[ext]' : 'images/[hash]-[name].[ext]'
+                                }
+                            }
+                        ]
                     }
                 ]
             },

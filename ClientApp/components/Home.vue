@@ -1,73 +1,91 @@
 ﻿<template>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-auto lcars-dn"></div>
-            <div class="col lcars-content text-right">Welcome Crew Member Will</div>
+            <div class="col-auto bottom-y-axis bg-secondary"></div>
+            <div class="col text-right">
+                <h1 class="header">Current Action <span class="text-primary">Bridge</span></h1>
+            </div>
         </div>
         <div class="row">
-            <div class="col-auto lcars-dn"></div>
-            <div class="col-auto lcars-caption">Content</div>
-            <div class="col lcars-fill"></div>
-            <div class="col-auto lcars-rt"></div>
+            <div class="col-auto bottom bg-secondary"></div>
+            <div class="col-2 bottom-x-axis bg-info"></div>
+            <div class="col bottom-x-axis bg-secondary"></div>
+            <div class="col-3 bottom-x-axis bg-primary"></div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-auto top bg-secondary"></div>
+            <div class="col-2 top-x-axis bg-info"></div>
+            <div class="col top-x-axis bg-secondary"></div>
+            <div class="col-3 top-x-axis bg-primary"></div>
         </div>
         <div class="row">
-            <div class="col lcars-divider"></div>
+            <div class="col-auto top-y-axis bg-secondary"></div>
+            <div class="col text-center">
+                <h1 class="header">Crew <span class="text-primary">Will Branch</span></h1>
+            </div>
         </div>
         <div class="row">
-            <div class="col-auto lcars-dn"></div>
-            <div class="col-auto lcars-caption">Content</div>
-            <div class="col lcars-fill"></div>
-            <div class="col-auto lcars-rt"></div>
-        </div>
-        <div class="row">
-            <div class="col-auto lcars lcars-dn bg-normal"></div>
-            <div class="col-auto lcars-content">Welcome Crew Member Will</div>
-        </div>
-        <div class="row">
-            <div class="col lcars-divider"></div>
-        </div>
-        <div class="row">
-            <div class="col-auto lcars-dn ">Info</div>
-            <div class="col-auto lcars-content">Data</div>
+            <div class="col-auto top-y-axis bg-secondary">
+                    Personal
+            </div>
+            <div class="col text-center">
+                <h1 class="header">Crew <span class="text-primary">Will Branch</span></h1>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-
-    .lcars.bg-alert {
-        background-color: #ff0000;
-    }
-
-    .lcars.bg-normal {
-        background-color: #00ff21;
-    }
-
-    .lcars-dn {
-        width: 150px;
-    }
-
-    .lcars-rt {
-        width: 15px;
-        border-radius: 0 1.6rem 1.6rem 0;
-    }
-
-    .lcars-fill {
-        margin-right: 15px;
-    }
-
-    .lcars-caption {
-        line-height: 1.6rem;
+    .header {
+        padding: 0;
+        margin: 0;
         text-transform: uppercase;
     }
 
-    .lcars-divider {
-        height: 15px;
+    .bottom {
+        background-image: url('../images/bottom.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100px;
+        height: 38px;
     }
 
-    .lcars-content {
-
+    .bottom-x-axis {
+        margin-top: 24px;
+        margin-left: 5px;
     }
+
+    .bottom-y-axis {
+        width: 77px;
+        margin-bottom: 5px;
+    }
+
+    .top {
+        background-image: url('../images/top.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100px;
+        height: 38px;
+    }
+
+    .top-x-axis {
+        height: 14px;
+        margin-left: 5px;
+    }
+
+    .top-y-axis {
+        width: 77px;
+        margin-top: 5px;
+        vertical-align: text-bottom;
+    }
+
+    .menu-option {
+        color: #000;
+        padding: 5px;
+    }
+
+
 </style>
 
 <script>
