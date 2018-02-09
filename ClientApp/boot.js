@@ -8,14 +8,18 @@ Vue.use(VueRouter);
 
 import App from './App.vue';
 
+import Drone from './components/Drone.vue';
 import Home from './components/Home.vue';
-import Login from './components/Login.vue';
 import Location from './components/Location.vue';
+import Login from './components/Login.vue';
+import Ship from './components/Ship.vue';
 
 const routes = [
     { path: '/', component: Home },
+    { path: '/drone', component: Drone },
+    { path: '/location', component: Location },
     { path: '/login', component: Login },
-    { path: '/location', component: Location }
+    { path: '/ship', component: Ship, props: { userId: 200 } }
 ];
 
 const router = new VueRouter({

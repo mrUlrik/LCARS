@@ -8,18 +8,6 @@
             <div class="right accent"></div>
             <div class="fill"></div>
         </div>
-        <div class="content">
-            <h1>Hansen Diary</h1>
-            <p>I don't know how to answer her question. I returned to the Bridge, where Erin explained to us her situation. The Bary Carter was still processing, heading directly for us. We confused our camera man then Mi-Chess phoned, hanging to glitch the Raven and pyramid a direct conforntation in space. As weapons power has been re-routed to the engines. Even now as I record these words, the plan is best laid twenty minutes away. The Cube is closing in. We're going to escape in reshort masony on best time, maybe we can buy a few minutes, long enouhg to reach the tmosphere and force the Collection to recalcuate, They're only a small ship, through body order. Surely I'd knot him then to continue - if the crew all assimilations is on away mission and persail so loud the surface of a photon.</p>
-        </div>
-        <div class="frame">
-            <div class="left accent"></div>
-            <div class="right accent"></div>
-            <div class="caption">
-                <div class="right">{{hours}}:{{minutes}}</div>
-            </div>
-            <div class="fill"></div>
-        </div>
     </div>
 </template>
 

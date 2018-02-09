@@ -26,12 +26,6 @@
             <div class="col bg-info ml-1 text-right">Orry Deason</div>
         </div>
         <router-view></router-view>
-        <div class="row mb-1">
-            <div class="col-auto top-y-axis bg-secondary"><h1>&nbsp;</h1></div>
-        </div>
-        <div class="row mb-1">
-            <div class="col-auto top-y-axis bg-primary fill"></div>
-        </div>
     </div>
 </template>
 
@@ -118,6 +112,10 @@
     .content {
         font-size: 1.2rem;
         line-height: 1.4rem;
+    }
+
+    ol {
+        padding-left: 1rem;
     }
 </style>
 
