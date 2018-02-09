@@ -6894,6 +6894,9 @@ a.text-dark:hover, a.text-dark:focus {
 
 h1, .title {
   text-transform: uppercase; }
+
+body {
+  overflow: hidden; }
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */

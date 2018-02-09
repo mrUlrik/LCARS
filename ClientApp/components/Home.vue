@@ -1,141 +1,195 @@
 ﻿<template>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-auto bottom-y-axis bg-secondary"></div>
-            <div class="col text-right">
-                <h1 class="header">Location <span class="text-primary">Bridge</span></h1>
+    <div>
+        <div class="row mb-1">
+            <div class="col-auto top bg-secondary"></div>
+            <div class="col-3 top-x-axis bg-secondary ml-1"></div>
+            <div class="col bg-primary ml-1 text-right">SECTOR Omicron</div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-info"></div>
+            <div class="col bg-info ml-1"><h1 class="header">Status</h1></div>
+        </div>
+        <!-- Row 1 -->
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-danger"></div>
+            <div class="col-4 ml-1 content">
+                <div class="row bg-danger">
+                    <div class="col-auto px-1">BRIDGE</div>
+                    <div class="col text-right px-1">5 LS | 1 XT</div>
+                </div>
+            </div>
+            <div class="col-5 ml-1 content">
+                <div class="row bg-danger">
+                    <div class="col-auto px-1">SCIENCE</div>
+                    <div class="col text-right px-1">5 LS | 1 XT</div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto bottom-y-axis bg-secondary mt-1"></div>
-            <div class="col"></div>
-            <div class="col-auto left-bumper"></div>
-            <div class="col-auto bg-secondary text-right text-uppercase ml-1">
-                Actions
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-primary"></div>
+            <div class="col-4 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">HELM</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">WEAPONS</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">DEF. SYS</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
             </div>
-            <div class="col-auto bg-secondary text-right text-uppercase ml-1">
-                Status
-            </div>
-            <div class="col-auto bg-secondary text-right text-uppercase ml-1">
-                Log Off
+            <div class="col-5 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">RESEARCH LAB</div>
+                    <div class="col-auto text-right px-1">1 DMG</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">XENOBIOLOGY</div>
+                    <div class="col-auto text-right px-1">2 DMG</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">ROBOTICS</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto bottom-y-axis bg-secondary"></div>
-            <div class="col text-right">
-                <h5 class="header">Welcome <span class="text-primary">Will Branch</span></h5>
+        <!-- Row 2 -->
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-success"></div>
+            <div class="col-4 ml-1 content">
+                <div class="row bg-success">
+                    <div class="col-auto px-1">COMMS</div>
+                    <div class="col text-right px-1">5 LS | 1 XT</div>
+                </div>
+            </div>
+            <div class="col-5 ml-1 content">
+                <div class="row bg-success">
+                    <div class="col-auto px-1">SECURITY</div>
+                    <div class="col text-right px-1">5 LS | 1 XT</div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto bottom bg-secondary mt-1"></div>
-            <div class="col-2 bottom-x-axis bg-info ml-1"></div>
-            <div class="col bottom-x-axis bg-secondary ml-1"></div>
-            <div class="col-3 bottom-x-axis bg-primary ml-1"></div>
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-primary"></div>
+            <div class="col-4 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">SHORT S.</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">LONG S.</div>
+                    <div class="col-auto text-right px-1">1 DMG</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">REQ. LINE</div>
+                    <div class="col-auto text-right px-1">2 DMG</div>
+                </div>
+            </div>
+            <div class="col-5 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">LOCKDOWN</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">SEC. REPORTS</div>
+                    <div class="col-auto text-right px-1">2 DMG</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">BEEPSKY CON</div>
+                    <div class="col-auto text-right px-1">1 DMG</div>
+                </div>
+            </div>
         </div>
-        <hr />
-        <div class="row">
-            <div class="col-auto top bg-secondary mb-1"></div>
-            <div class="col-2 top-x-axis bg-info ml-1"></div>
-            <div class="col top-x-axis bg-secondary ml-1"></div>
-            <div class="col-3 top-x-axis bg-primary ml-1"></div>
-        </div>
-        <div class="row">
+        <!-- Row 3/4 -->
+        <div class="row mb-1">
             <div class="col-auto top-y-axis bg-secondary"></div>
-            <div class="col text-center">
-                <h1 class="header">Crew <span class="text-primary">Will Branch</span></h1>
+            <div class="col-4 ml-1 content">
+                <div class="row bg-secondary">
+                    <div class="col-auto px-1">MEDICAL</div>
+                    <div class="col text-right px-1">4 LS | 2 XT</div>
+                </div>
+            </div>
+            <div class="col-5 ml-1 content">
+                <div class="row bg-secondary">
+                    <div class="col-auto px-1">ENGINEERING</div>
+                    <div class="col text-right px-1">4 LS | 1 XT</div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto top-y-axis bg-secondary">
-                Personal
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-primary"></div>
+            <div class="col-4 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">AUTO DOC</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">CREW RECORD</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
             </div>
-            <div class="col text-center">
-                <h1 class="header">Crew <span class="text-primary">Will Branch</span></h1>
+            <div class="col-5 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">MECH BAY</div>
+                    <div class="col-auto text-right px-1">1 DMG</div>
+                </div>
+                <div class="row">
+                    <div class="col px-2">R.DRN CON</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
             </div>
         </div>
-        <div class="row d-flex align-items-stretch">
-            <div class="col-auto top-y-axis bg-secondary">sdf</div>
+        <!-- Row 3/4 -->
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-info"></div>
+            <div class="col-4 ml-1 content">
+                <div class="row bg-info">
+                    <div class="col-auto px-1">LOGISTIC</div>
+                    <div class="col text-right px-1">4 LS | 2 XT</div>
+                </div>
+            </div>
+            <div class="col-5 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">ATMO</div>
+                    <div class="col-auto text-right px-1">OK</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-primary"></div>
+            <div class="col-4 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">M.DRN CON</div>
+                    <div class="col-auto text-right px-1">2 DMG</div>
+                </div>
+            </div>
+            <div class="col-5 ml-1 content">
+                <div class="row">
+                    <div class="col px-2">SLIPDRIVE</div>
+                    <div class="col-auto text-right px-1">20 DMG</div>
+                </div>
+            </div>
+        </div>
+        <!-- Status Buttons -->
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-info">Status</div>
+            <div class="col bg-success ml-1 button px-2">Personal</div>
+            <div class="col bg-success ml-1 button px-2">Ship</div>
+            <div class="col bg-success ml-1 button px-2">Drone</div>
+        </div>
+        <!-- Padding -->
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-primary fill"></div>
+            <div class="col-4 ml-1"></div>
         </div>
     </div>
 </template>
 
 <style scoped>
-    .header {
-        padding: 0;
-        margin: 0;
-        text-transform: uppercase;
+    .value {
+        text-align: right;
     }
-
-    .bottom {
-        background-image: url('../images/bottom.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100px;
-        height: 38px;
-    }
-
-    .bottom-x-axis {
-        margin-top: 27px;
-    }
-
-    .bottom-y-axis {
-        width: 77px;
-    }
-
-    .top {
-        background-image: url('../images/top.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100px;
-        height: 38px;
-    }
-
-    .top-x-axis {
-        height: 14px;
-    }
-
-    .top-y-axis {
-        width: 77px;
-        vertical-align: text-bottom;
-    }
-
-    .menu-option {
-        color: #000;
-        padding: 5px;
-    }
-
-    .left-bumper {
-        background-color: #DD6644;
-        border-radius: 1.6rem 0 0 1.6rem;
-    }
-
-
 </style>
-
-<script>
-    export default {
-        data() {
-            return {
-                hours: '',
-                minutes: ''
-            }
-        },
-        beforeMount() {
-            this.updateDateTime();
-        },
-        mounted() {
-            setInterval(this.updateDateTime, 1000);
-        },
-        methods: {
-            updateDateTime() {
-                let now = new Date();
-
-                this.hours = this.getZeroPad(now.getHours());
-                this.minutes = this.getZeroPad(now.getMinutes());
-            },
-            getZeroPad(n) {
-                return (parseInt(n, 10) >= 10 ? '' : '0') + n;
-            }
-        }
-    }
-</script>
