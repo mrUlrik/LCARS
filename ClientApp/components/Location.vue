@@ -1,13 +1,13 @@
 ﻿<template>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-auto bottom-y-axis bg-secondary"></div>
+            <div class="col-auto bottom-y-axis bg-info"></div>
             <div class="col text-right">
-                <h1 class="header">Location <span class="text-primary">Bridge</span></h1>
+                <h1 class="header">Location <span class="text-primary">Turbolift</span></h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto bottom-y-axis bg-secondary mt-1"></div>
+        <div class="row mt-1">
+            <div class="col-auto bottom-y-axis bg-secondary"></div>
             <div class="col"></div>
             <div class="col-auto left-bumper"></div>
             <div class="col-auto bg-secondary text-right text-uppercase ml-1">
@@ -26,35 +26,48 @@
                 <h5 class="header">Welcome <span class="text-primary">Will Branch</span></h5>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto bottom bg-secondary mt-1"></div>
+        <div class="row mt-1">
+            <div class="col-auto bottom bg-secondary"></div>
             <div class="col-2 bottom-x-axis bg-info ml-1"></div>
             <div class="col bottom-x-axis bg-secondary ml-1"></div>
             <div class="col-3 bottom-x-axis bg-primary ml-1"></div>
         </div>
         <hr />
-        <div class="row">
-            <div class="col-auto top bg-secondary mb-1"></div>
+        <div class="row mb-1">
+            <div class="col-auto top bg-secondary"></div>
             <div class="col-2 top-x-axis bg-info ml-1"></div>
             <div class="col top-x-axis bg-secondary ml-1"></div>
             <div class="col-3 top-x-axis bg-primary ml-1"></div>
         </div>
-        <div class="row">
+        <div class="row mb-1">
             <div class="col-auto top-y-axis bg-secondary"></div>
             <div class="col text-center">
-                <h1 class="header">Crew <span class="text-primary">Will Branch</span></h1>
+                <h1 class="header">Turbolift</h1>
+                <h1 class="header"><span class="text-primary">Select Destination</span></h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto top-y-axis bg-secondary">
-                Personal
-            </div>
-            <div class="col text-center">
-                <h1 class="header">Crew <span class="text-primary">Will Branch</span></h1>
-            </div>
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-info"></div>
+            <div class="col-auto bg-warning ml-1 button">Bridge</div>
+            <div class="col-auto bg-warning ml-1 button">Comms</div>
+            <div class="col-auto bg-warning ml-1 button">Engineer</div>
+            <div class="col-auto bg-info ml-1 right-bumper"></div>
         </div>
-        <div class="row d-flex align-items-stretch">
-            <div class="col-auto top-y-axis bg-secondary">sdf</div>
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-info"></div>
+            <div class="col-auto bg-success ml-1 button">Medical</div>
+            <div class="col-auto bg-success ml-1 button">Science</div>
+            <div class="col-auto bg-success ml-1 button">Security</div>
+            <div class="col-auto bg-info ml-1 right-bumper"></div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-info"></div>
+            <div class="col-auto bg-secondary ml-1 button-wide">Logistics</div>
+            <div class="col-auto bg-secondary ml-1 button-wide">Bar</div>
+            <div class="col-auto bg-info ml-1 right-bumper"></div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-auto top-y-axis bg-primary fill"><br/><br/></div>
         </div>
     </div>
 </template>
@@ -64,6 +77,19 @@
         padding: 0;
         margin: 0;
         text-transform: uppercase;
+        line-height: 3.0rem;
+    }
+
+    .button {
+        text-align: center;
+        text-transform: uppercase;
+        width: 100px;
+    }
+
+    .button-wide {
+        text-align: center;
+        text-transform: uppercase;
+        width: 152px;
     }
 
     .bottom {
@@ -75,7 +101,7 @@
     }
 
     .bottom-x-axis {
-        margin-top: 27px;
+        margin-top: 24px;
     }
 
     .bottom-y-axis {
@@ -109,6 +135,14 @@
         border-radius: 1.6rem 0 0 1.6rem;
     }
 
+    .right-bumper {
+        background-color: #DD6644;
+        border-radius: 0 1.6rem 1.6rem 0;
+    }
+
+    .fill {
+
+    }
 
 </style>
 

@@ -10,10 +10,12 @@ import App from './App.vue';
 
 import Home from './components/Home.vue';
 import Login from './components/Login.vue';
+import Location from './components/Location.vue';
 
 const routes = [
     { path: '/', component: Home },
-    { path: '/login', component: Login }
+    { path: '/login', component: Login },
+    { path: '/location', component: Location }
 ];
 
 const router = new VueRouter({
