@@ -1,36 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace LCARS.Models
 {
     public class GameContext : DbContext
     {
+        public GameContext(DbContextOptions<GameContext> options) : base(options) { }
+
         public DbSet<Game> Games { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Character> Characters { get; set; }
+        public DbSet<Teleport> Teleports { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<CharacterSkill> CharacterSkills { get; set; }
+        public DbSet<Objective> Objectives { get; set; }
+        public DbSet<CharacterObjective> CharacterObjectives { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Action> Actions { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite(@"Data Source=Data\games.db");
-        }
-    }
-
-    public class Game
-    {
-        public int GameId { get; set; }
-        public string Name { get; set; }
-        public DateTime Created { get; set; }
-        public bool IsActive { get; set; }
-
-        public List<User> Users { get; set; }
-    }
-
-    public class User
-    {
-        public int UserId { get; set; }
-        public int GameId { get; set; }
-        public int Name { get; set; }
-
-        public Game Game { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
     }
 }

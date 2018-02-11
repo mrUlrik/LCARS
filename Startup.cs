@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using LCARS.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace LCARS
 {
@@ -9,7 +12,11 @@ namespace LCARS
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+            services.AddDbContext<GameContext>(options => options.UseSqlite(@"Data Source=games.db"));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -17,6 +24,7 @@ namespace LCARS
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     HotModuleReplacement = true
@@ -24,6 +32,7 @@ namespace LCARS
             }
 
             app.UseStaticFiles();
+
 
             app.UseMvc(routes =>
             {
