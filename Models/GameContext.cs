@@ -7,7 +7,7 @@ namespace LCARS.Models
         public GameContext(DbContextOptions<GameContext> options) : base(options) { }
 
         public DbSet<Game> Games { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Player> Players { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Teleport> Teleports { get; set; }
         public DbSet<Skill> Skills { get; set; }
@@ -15,7 +15,7 @@ namespace LCARS.Models
         public DbSet<Objective> Objectives { get; set; }
         public DbSet<CharacterObjective> CharacterObjectives { get; set; }
         public DbSet<Location> Locations { get; set; }
-        public DbSet<Action> Actions { get; set; }
+        public DbSet<Attribute> Attributes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
     }

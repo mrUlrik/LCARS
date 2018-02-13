@@ -32,6 +32,10 @@
     <None Include="wwwroot\images\United_Federation_of_Planets_002_by_Scharfshutze.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+
   <Target Name="CustomCollectFiles">
     <ItemGroup>
       <_CustomFiles Include="wwwroot\dist\*" />

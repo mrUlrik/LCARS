@@ -1,0 +1,61 @@
+﻿@using LCARS.Areas.Admin.Models
+@model GameView
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js" integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.js" integrity="sha384-+U6GJ+F6DP8MVwdjdb+6ZfY2S85tZu6hIinFEdbziA0fAfGXlV7xlW9x9rdeY2/o" crossorigin="anonymous"></script>
+    <script src="js/mindmup-editabletable.js"></script>
+}
+<div class="container">
+    <h1>New Game</h1>
+    <p>Enter the names of the individuals playing and select their character. Their names are for your convenience and will only be seen in the administration section.</p>
+
+    @using (Html.BeginForm("Insert", "Game"))
+    {
+        <p class="text-danger">@Html.ValidationSummary()</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Game Name</th>
+                    <th>Number of Players</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </td>
+                    <td>@ViewBag.NumPlayers</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Character</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Players.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            <input asp-for="Players[i].Name" class="form-control" />
+                            <span asp-validation-for="Players[i].Name" class="text-danger"></span>
+                        </td>
+                        <td>
+                            <select asp-for="Players[i].CharacterId" asp-items="ViewBag.Characters" class="form-control"></select>
+                            <span asp-validation-for="Players[i].CharacterId" class="text-danger"></span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="col-2 mb-3">
+            <button type="submit" class="btn btn-primary mb-2">Create Game</button>
+        </div>
+    }
+</div>

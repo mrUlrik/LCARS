@@ -1,8 +1,11 @@
-﻿namespace LCARS.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LCARS.Models
 {
-    public class User
+    public class Player
     {
-        public int UserId { get; set; }
+        [Key]
+        public int PlayerId { get; set; }
         public int GameId { get; set; }
         public int CharacterId { get; set; }
         public string Name { get; set; }

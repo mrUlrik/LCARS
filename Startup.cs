@@ -37,6 +37,10 @@ namespace LCARS
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    "areas",
+                    "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
                     "default",
                     "{controller=Default}/{action=Index}/{id?}");
 

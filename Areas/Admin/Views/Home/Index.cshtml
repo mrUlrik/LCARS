@@ -1,0 +1,91 @@
+﻿@using LCARS.Areas.Admin.Models
+@model LCARS.Areas.Admin.Models.GameView
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js" integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.js" integrity="sha384-+U6GJ+F6DP8MVwdjdb+6ZfY2S85tZu6hIinFEdbziA0fAfGXlV7xlW9x9rdeY2/o" crossorigin="anonymous"></script>
+    <script src="js/mindmup-editabletable.js"></script>
+}
+<div class="container">
+    <h1>New Game</h1>
+    <p>Enter a name and enter the number of players for a new game. You will be brought to a game creation screen.</p>
+    @using (Html.BeginForm("Create", "Game", new { Area = "Admin" }))
+    {
+        <p class="text-danger">@Html.ValidationSummary()</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Game Name</th>
+                    <th>Number of Players</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" data-val="true" data-val-range="The field NumPlayers must be between 0 and 24." data-val-range-max="24" data-val-range-min="2" data-val-required="The NumPlayers field is required." id="NumPlayers" name="NumPlayers" value="" />
+                        <span class="text-danger" data-valmsg-for="NumPlayers" data-valmsg-replace="true"></span>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary mb-2">Create Game</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+
+    @if (ViewBag.RunningGames.Count > 0)
+    {
+        <h1>Running Games</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Created On</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (GameView game in ViewBag.RunningGames)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => game.GameId)</td>
+                        <td>
+                            <a href="@Url.Action("View", "Game", new {id = game.GameId})">@Html.DisplayFor(x => game.Name)</a>
+                        </td>
+                        <td>@Html.DisplayFor(x => game.Created)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @if (ViewBag.PastGames.Count > 0)
+    {
+        <h1>Past Games</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Created On</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (GameView game in ViewBag.PastGames)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => game.GameId)</td>
+                        <td>
+                            <a href="@Url.Action("View", "Game", new {id = game.GameId})">@Html.DisplayFor(x => game.Name)</a>
+                        </td>
+                        <td>@Html.DisplayFor(x => game.Created)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
