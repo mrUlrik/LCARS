@@ -13,6 +13,7 @@ namespace LCARS.Areas.Admin.Models
 
         public DateTime Created { get; set; }
         public bool IsActive { get; set; }
+        public int Round { get; set; }
 
         public List<PlayerView> Players { get; set; }
     }

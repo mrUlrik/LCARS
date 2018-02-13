@@ -6,6 +6,7 @@ using LCARS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Rest.TransientFaultHandling;
 
 namespace LCARS.Areas.Admin.Controllers
 {
@@ -52,7 +53,8 @@ namespace LCARS.Areas.Admin.Controllers
                 {
                     Created = DateTime.Now,
                     IsActive = true,
-                    Name = input.Name
+                    Name = input.Name,
+                    Round = 1
                 };
 
                 _db.Games.Add(game);
@@ -68,12 +70,14 @@ namespace LCARS.Areas.Admin.Controllers
             return View("Create");
         }
 
-        public IActionResult View(int id)
+        public IActionResult Manage(int id)
         {
             var game = _db.Games
                 .Select(x =>
                     new GameView {Created = x.Created, GameId = x.GameId, IsActive = x.IsActive, Name = x.Name})
-                .Single(x => x.GameId == id);
+                .SingleOrDefault(x => x.GameId == id && x.IsActive);
+            if (game == null) return RedirectToAction("Index", "Home");
+
             var players = _db.Players.Where(x => x.GameId == game.GameId).Include(x => x.Character).Select(x =>
                 new PlayerView
                 {
@@ -85,7 +89,8 @@ namespace LCARS.Areas.Admin.Controllers
                 }).ToList();
             game.Players = players;
 
-            
+            var statuses = _db.Statuses.Where(x => x.GameId == game.GameId && x.Round == game.Round).OrderByDescending(x => x.Time).GroupBy(x => new {x.LocationId, x.AttributeId}).FirstOrDefault()?.ToList();
+            ViewBag.Statuses = statuses;
 
             return View(game);
         }

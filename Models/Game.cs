@@ -11,6 +11,7 @@ namespace LCARS.Models
         public string Name { get; set; }
         public DateTime Created { get; set; }
         public bool IsActive { get; set; }
+        public int Round { get; set; }
 
         public List<Player> Players { get; set; }
     }

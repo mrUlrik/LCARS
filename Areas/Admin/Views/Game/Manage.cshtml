@@ -1,4 +1,5 @@
-﻿@model LCARS.Areas.Admin.Models.GameView
+﻿@using LCARS.Models
+@model LCARS.Areas.Admin.Models.GameView
 @section Scripts {
     <script src="/js/mindmup-editabletable.js"></script>
     <script>
@@ -7,6 +8,10 @@
     </script>
 }
 <div class="container-fluid">
+    @foreach (Status status in ViewBag.Statuses)
+    {
+        @status.GameId
+    }
     <div class="row">
         <h1>Ship Locations</h1>
     </div>
