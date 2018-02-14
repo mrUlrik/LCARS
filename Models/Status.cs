@@ -15,5 +15,7 @@ namespace LCARS.Models
 
         public string TextValue1 { get; set; }
         public string TextValue2 { get; set; }
+
+        public Attribute Attribute { get; set; }
     }
 }

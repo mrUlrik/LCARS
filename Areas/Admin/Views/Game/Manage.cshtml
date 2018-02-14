@@ -7,117 +7,145 @@
         $('#table-slipgate').editableTableWidget();
     </script>
 }
-<div class="container-fluid">
-    @foreach (Status status in ViewBag.Statuses)
+    <div class="container-fluid">
+        @if (ViewBag.Statuses.Count > 0)
     {
-        @status.GameId
-    }
-    <div class="row">
-        <h1>Ship Locations</h1>
-    </div>
-    <div class="row">
-        <div class="col-2">
-            <table class="table table-bordered table-sm" id="table-sector">
+        <table class="table">
+            <tr>
+                <td>StatusId</td>
+                <td>AttributeId</td>
+                <td>GameId</td>
+                <td>LocationId</td>
+                <td>Round</td>
+                <td>Value1</td>
+                <td>Value2</td>
+                <td>Time</td>
+            </tr>
+            @foreach (Status status in ViewBag.Statuses)
+            {
                 <tr>
-                    <th>Ship Sector</th>
-                    <td class="grid-value">BETA</td>
+                    <td>@status.StatusId</td>
+                    <td>@status.AttributeId</td>
+                    <td>@status.GameId</td>
+                    <td>@status.LocationId</td>
+                    <td>@status.Round</td>
+                    <td>@status.TextValue1</td>
+                    <td>@status.TextValue2</td>
+                    <td>@status.Time</td>
                 </tr>
-            </table>
+            }
+        </table>
+
+}
+        <h1>@Model.Name</h1>
+        <p class="small"><strong>Created</strong> @Html.DisplayTextFor(x => Model.Created)</p>
+        <p class="small"><strong>Round</strong> @Html.DisplayTextFor(x => Model.Round)</p>
+        <div class="row">
+            <h1>Ship Locations</h1>
         </div>
-        <div class="col-2">
-            <table class="table table-bordered table-sm" id="table-slipgate">
-                <tr>
-                    <th>Slipate Systems</th>
-                    <td>OFFLINE</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2">
-            <h1>Bridge</h1>
-            <table class="table table-bordered table-sm">
-                <tr>
-                    <th>Life Support</th>
-                    <td>5</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Threats</th>
-                    <td>0</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Helm</th>
-                    <td>0 DMG</td>
-                    <td>OK</td>
-                </tr>
-                <tr>
-                    <th>Battle Stations</th>
-                    <td>0 DMG</td>
-                    <td>OK</td>
-                </tr>
-                <tr>
-                    <th>Defense Systems</th>
-                    <td>0 DMG</td>
-                    <td>OK</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <h1>@Model.Name</h1>
-    <div class="row">
-        <div class="col">
-            <h2>Players</h2>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Player Name</th>
-                    <th>Character</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var player in Model.Players)
-                {
+        <div class="row">
+            <div class="col-2">
+                <table class="table table-bordered table-sm" id="table-sector">
                     <tr>
-                        <td>@player.Name</td>
-                        <td>@player.CharacterName</td>
+                        <th>Ship Sector</th>
+                        <td class="grid-value">BETA</td>
                     </tr>
-                }
-                </tbody>
-            </table>
+                </table>
+            </div>
+            <div class="col-2">
+                <table class="table table-bordered table-sm" id="table-slipgate">
+                    <tr>
+                        <th>Slipate Systems</th>
+                        <td>OFFLINE</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="col">
-            <h3>Bridge</h3>
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th scope="row">Life Support</th>
-                    <td>5</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">Threats</th>
-                    <td>0</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">Helm</th>
-                    <td>0 DMG</td>
-                    <td>OK</td>
-                </tr>
-                <tr>
-                    <th scope="row">Battle Stations</th>
-                    <td>0 DMG</td>
-                    <td>OK</td>
-                </tr>
-                <tr>
-                    <th scope="row">Defense Systems</th>
-                    <td>0 DMG</td>
-                    <td>OK</td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-2">
+                <h1>Bridge</h1>
+                <table class="table table-bordered table-sm">
+                    <tr>
+                        <th>Life Support</th>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Threats</th>
+                        <td>0</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Helm</th>
+                        <td>0 DMG</td>
+                        <td>OK</td>
+                    </tr>
+                    <tr>
+                        <th>Battle Stations</th>
+                        <td>0 DMG</td>
+                        <td>OK</td>
+                    </tr>
+                    <tr>
+                        <th>Defense Systems</th>
+                        <td>0 DMG</td>
+                        <td>OK</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h1>@Model.Name</h1>
+        <div class="row">
+            <div class="col">
+                <h2>Players</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Character</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var player in Model.Players)
+                    {
+                        <tr>
+                            <td>@player.Name</td>
+                            <td>@player.CharacterName</td>
+                        </tr>
+                }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h3>Bridge</h3>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Life Support</th>
+                            <td>5</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Threats</th>
+                            <td>0</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Helm</th>
+                            <td>0 DMG</td>
+                            <td>OK</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Battle Stations</th>
+                            <td>0 DMG</td>
+                            <td>OK</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Defense Systems</th>
+                            <td>0 DMG</td>
+                            <td>OK</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>

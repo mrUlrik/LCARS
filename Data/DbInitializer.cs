@@ -90,6 +90,42 @@ namespace LCARS.Data
             db.CharacterSkills.AddRange(characterSkills);
             db.SaveChanges();
 
+            var objectives = new[]
+            {
+                new Objective { ObjectiveId = 1, Title = "Voyager Home", Description = "Guide the USS Exeter through the Slipgate!" },
+                new Objective { ObjectiveId = 2, Title = "First Generation", Description = "Survive the adventure." },
+                new Objective { ObjectiveId = 3, Title = "O Captain", Description = "Find out who killed the captain." },
+                new Objective { ObjectiveId = 4, Title = "Part Scavenger", Description = "You sabotaged the Life Support systems. No more than two people can know you did it." },
+                new Objective { ObjectiveId = 5, Title = "Go, My Minions!", Description = "At any point during the adventure, have at least two drones of each type." },
+                new Objective { ObjectiveId = 6, Title = "Core First", Description = "Find out who sabotaged the Slip Drive." },
+                new Objective { ObjectiveId = 7, Title = "Strawman Argument", Description = "Never let the ship run away from a hostile alien ship." },
+                new Objective { ObjectiveId = 8, Title = "Diplomacy Achieved", Description = "Blow up a friendly alien ship." },
+                new Objective { ObjectiveId = 9, Title = "Bleeding Heart", Description = "Save all non-Mangalorian species you can, despite the Prime Directive. You can fail this once." },
+                new Objective { ObjectiveId = 10, Title = "Stardate 420", Description = "End the adventure with \"Space Weed\" researched." },
+                new Objective { ObjectiveId = 11, Title = "I'm The Captain Now", Description = "At least two of the Chief Engineer, Chief Veterinarian, and ISAAC Representative die at least once." },
+                new Objective { ObjectiveId = 12, Title = "Breathe Easy", Description = "Two different rooms hit maximum Life Support capacity at any point during the adventure." },
+                new Objective { ObjectiveId = 13, Title = "Choke on That, Nerds", Description = "You sabotaged the Slipdrive Core. Make sure no more than two people find out." },
+                new Objective { ObjectiveId = 14, Title = "First Class Dining", Description = "Exterminate the Schmii species." },
+                new Objective { ObjectiveId = 15, Title = "Nanor Surprise", Description = "End the adventure with Black Velanese Truffles in cargo." },
+                new Objective { ObjectiveId = 16, Title = "Galaxial Healthcare", Description = "End the adventure with less than half the crew being injured. ... dead's OK, though." },
+                new Objective { ObjectiveId = 17, Title = "Veteran Veterinarian", Description = "End the adventure with the Auto Doc damaged." },
+                new Objective { ObjectiveId = 18, Title = "Prime Directive", Description = "Resolve never to interfere with alien life, whether helping or harming them. You can fail this once." },
+                new Objective { ObjectiveId = 19, Title = "No Acting the Mickey", Description = "End the adventure with three players in Lockdown." },
+                new Objective { ObjectiveId = 20, Title = "Freezy Pops", Description = "You sabotaged the Cryo Station. Make sure no more than two people find out." },
+                new Objective { ObjectiveId = 21, Title = "Future Democracy", Description = "Destroy all alien species you can, when given the opportunity. You can fail this once." },
+                new Objective { ObjectiveId = 22, Title = "For Science!", Description = "The ship completes at least three Research Upgrades." },
+                new Objective { ObjectiveId = 23, Title = "Harmless Experiment", Description = "You killed the Captain. Make sure no more than two people find out." },
+                new Objective { ObjectiveId = 24, Title = "The Booty, Baby", Description = "When the ship is in the same sector as BooBies, spend one round in the bar doing nothing." },
+                new Objective { ObjectiveId = 25, Title = "Stay Dandy, Baby", Description = "Get kicked out of three rooms due to Life Support overload." },
+                new Objective { ObjectiveId = 26, Title = "I'm The Captain Now", Description = "At least two of the First Officer, Tactical Officer, and Mawg survive without dying once." },
+                new Objective { ObjectiveId = 27, Title = "No Red Tape", Description = "You sabotaged the Crew Records. Make sure no more than two people find out." },
+                new Objective { ObjectiveId = 28, Title = "Gone to Plaid", Description = "" },
+                new Objective { ObjectiveId = 29, Title = "Use the Schwartz", Description = "" },
+                new Objective { ObjectiveId = 30, Title = "Unnamed", Description = "At least two of the First Officer, Tactical Officer, and Mawg survive without dying once." }
+            };
+            db.Objectives.AddRange(objectives);
+            db.SaveChanges();
+
             var characterObjectives = new[]
             {
                 new CharacterObjective { CharacterObjectiveId = 1, CharacterId = 1, ObjectiveId = 1},

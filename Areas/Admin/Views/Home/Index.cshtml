@@ -54,7 +54,7 @@
                     <tr>
                         <td>@Html.DisplayFor(x => game.GameId)</td>
                         <td>
-                            <a href="@Url.Action("View", "Game", new {id = game.GameId})">@Html.DisplayFor(x => game.Name)</a>
+                            <a href="@Url.Action("Manage", "Game", new {id = game.GameId})">@Html.DisplayFor(x => game.Name)</a>
                         </td>
                         <td>@Html.DisplayFor(x => game.Created)</td>
                     </tr>
