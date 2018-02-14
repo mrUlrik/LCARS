@@ -1,151 +1,168 @@
-﻿@using LCARS.Models
+﻿@using LCARS.Areas.Admin.Models
 @model LCARS.Areas.Admin.Models.GameView
 @section Scripts {
-    <script src="/js/mindmup-editabletable.js"></script>
+    <script src="/local/mindmup-editabletable.js"></script>
     <script>
+        var gameId = @Model.GameId;
+        var round = @Model.Round;
         $('#table-sector').editableTableWidget();
         $('#table-slipgate').editableTableWidget();
+        @foreach (var location in ViewBag.Locations)
+        {
+            <text>
+                $('#table-location-@location.LocationId').editableTableWidget();
+            </text>
+        }
+
+        $('table td').on('change',
+            function (evt, newValue) {
+                var status = {
+                    statusId: [$(this).attr('id')],
+                    [$(this).attr('axis')]: newValue
+                };
+                alert(JSON.stringify(status));
+                return true;
+            });
     </script>
 }
-    <div class="container-fluid">
-        @if (ViewBag.Statuses.Count > 0)
-    {
-        <table class="table">
-            <tr>
-                <td>StatusId</td>
-                <td>AttributeId</td>
-                <td>GameId</td>
-                <td>LocationId</td>
-                <td>Round</td>
-                <td>Value1</td>
-                <td>Value2</td>
-                <td>Time</td>
-            </tr>
-            @foreach (Status status in ViewBag.Statuses)
-            {
-                <tr>
-                    <td>@status.StatusId</td>
-                    <td>@status.AttributeId</td>
-                    <td>@status.GameId</td>
-                    <td>@status.LocationId</td>
-                    <td>@status.Round</td>
-                    <td>@status.TextValue1</td>
-                    <td>@status.TextValue2</td>
-                    <td>@status.Time</td>
-                </tr>
-            }
-        </table>
-
-}
-        <h1>@Model.Name</h1>
-        <p class="small"><strong>Created</strong> @Html.DisplayTextFor(x => Model.Created)</p>
-        <p class="small"><strong>Round</strong> @Html.DisplayTextFor(x => Model.Round)</p>
-        <div class="row">
-            <h1>Ship Locations</h1>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <table class="table table-bordered table-sm" id="table-sector">
-                    <tr>
-                        <th>Ship Sector</th>
-                        <td class="grid-value">BETA</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-2">
-                <table class="table table-bordered table-sm" id="table-slipgate">
-                    <tr>
-                        <th>Slipate Systems</th>
-                        <td>OFFLINE</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <h1>Bridge</h1>
-                <table class="table table-bordered table-sm">
-                    <tr>
-                        <th>Life Support</th>
-                        <td>5</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>Threats</th>
-                        <td>0</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>Helm</th>
-                        <td>0 DMG</td>
-                        <td>OK</td>
-                    </tr>
-                    <tr>
-                        <th>Battle Stations</th>
-                        <td>0 DMG</td>
-                        <td>OK</td>
-                    </tr>
-                    <tr>
-                        <th>Defense Systems</th>
-                        <td>0 DMG</td>
-                        <td>OK</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <h1>@Model.Name</h1>
-        <div class="row">
-            <div class="col">
-                <h2>Players</h2>
-                <table class="table">
-                    <thead>
+<div class="container-fluid p-5">
+    <h1 class="float-right text-warning">Round: @Model.Round</h1>
+    <h1 class="text-info">@Model.Name</h1>
+    <strong>Created:</strong> @Model.Created
+    <hr/>
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                <div class="col-6">
+                    <table class="table table-sm" id="table-sector">
                         <tr>
-                            <th>Player Name</th>
-                            <th>Character</th>
+                            <th>Ship Sector</th>
+                            <td class="grid-value">BETA</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var player in Model.Players)
+                    </table>
+                </div>
+                <div class="col-6">
+                    <table class="table table-sm" id="table-slipgate">
+                        <tr>
+                            <th>Slipgate Systems</th>
+                            <td class="grid-value">OFFLINE</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var location in ViewBag.Locations)
+                {
+                    if (string.IsNullOrWhiteSpace(location.Name))
                     {
-                        <tr>
-                            <td>@player.Name</td>
-                            <td>@player.CharacterName</td>
-                        </tr>
+                        continue;
+                    }
+                    <div class="col-6">
+                        <h3>@location.Name</h3>
+                        <div class="row">
+                            <div class="col-8">
+                                <table class="table table-sm" id="table-location-@location.LocationId">
+                                    @foreach (LCARS.Models.Attribute attribute in location.Attributes)
+                                    {
+                                        var status = attribute.Statuses.OrderByDescending(x => x.Time).FirstOrDefault();
+                                        <tr data-toggle="tooltip" data-placement="top" title="@status?.Time">
+                                            <th>@attribute.Name</th>
+                                            <td class="grid-value text-right" axis="TextValue1" id="@status?.StatusId">@status?.TextValue1</td>
+                                            <td class="grid-value text-right" axis="TextValue2" id="@status?.StatusId">@status?.TextValue2</td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <div class="col-4">
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Andy</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Arianna</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Birkett</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Courtney</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Courtney</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Erica</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Ethan</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Jesus</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Kristin</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Luis</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Mace</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Rhett</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Sarah</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Sarah</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Shawn</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Sarah</p>
+                                </div>
+                                <div class="card float-left px-1" style="width: 5rem;">
+                                    <p class="card-text">Sarah</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
-                    </tbody>
-                </table>
             </div>
-            <div class="col">
-                <h3>Bridge</h3>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th scope="row">Life Support</th>
-                            <td>5</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Threats</th>
-                            <td>0</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Helm</th>
-                            <td>0 DMG</td>
-                            <td>OK</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Battle Stations</th>
-                            <td>0 DMG</td>
-                            <td>OK</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Defense Systems</th>
-                            <td>0 DMG</td>
-                            <td>OK</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        </div>
+        <div class="col-4">
+            <h3>Player Actions</h3>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Character</th>
+                    <th>Location</th>
+                    <th>Action</th>
+                    <th>Variables</th>
+                </tr>
+                <tr>
+                    <th scrope="row">Andy</th>
+                    <td>Randy Hardthrottle</td>
+                    <td>Bridge</td>
+                    <td>Use Help</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scrope="row">Arianna</th>
+                    <td>Andromeda Galaxia</td>
+                    <td>Communications</td>
+                    <td>Use Short Range</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <th scrope="row">Birkett</th>
+                    <td>Bisquette Stickson</td>
+                    <td>Communications</td>
+                    <td>Use Short Trange</td>
+                    <td>D</td>
+                </tr>
+            </table>
         </div>
     </div>
+</div>

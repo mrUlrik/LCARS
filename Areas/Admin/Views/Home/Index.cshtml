@@ -5,8 +5,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.js" integrity="sha384-+U6GJ+F6DP8MVwdjdb+6ZfY2S85tZu6hIinFEdbziA0fAfGXlV7xlW9x9rdeY2/o" crossorigin="anonymous"></script>
     <script src="js/mindmup-editabletable.js"></script>
 }
-<div class="container">
-    <h1>New Game</h1>
+<div class="container p-5">
+    <h2>New Game</h2>
     <p>Enter a name and enter the number of players for a new game. You will be brought to a game creation screen.</p>
     @using (Html.BeginForm("Create", "Game", new { Area = "Admin" }))
     {
@@ -39,7 +39,7 @@
 
     @if (ViewBag.RunningGames.Count > 0)
     {
-        <h1>Running Games</h1>
+        <h2>Running Games</h2>
         <table class="table">
             <thead>
                 <tr>

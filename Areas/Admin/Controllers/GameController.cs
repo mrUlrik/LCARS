@@ -5,6 +5,7 @@ using LCARS.Areas.Admin.Models;
 using LCARS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace LCARS.Areas.Admin.Controllers
@@ -46,27 +47,29 @@ namespace LCARS.Areas.Admin.Controllers
         {
             if (input == null) return RedirectToAction("Index");
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View("Create");
+
+            var game = new Game
             {
-                var game = new Game
-                {
-                    Created = DateTime.Now,
-                    IsActive = true,
-                    Name = input.Name,
-                    Round = 1
-                };
+                Created = DateTime.Now,
+                IsActive = true,
+                Name = input.Name,
+                Round = 1
+            };
 
-                _db.Games.Add(game);
-                _db.SaveChanges();
+            _db.Games.Add(game);
+            _db.SaveChanges();
 
-                var players = input.Players.Select(player =>
-                    new Player {CharacterId = player.CharacterId, GameId = game.GameId, Name = player.Name}).ToList();
-                _db.Players.AddRange(players);
-                _db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
+            var players = input.Players.Select(player =>
+                new Player {CharacterId = player.CharacterId, GameId = game.GameId, Name = player.Name}).ToList();
+            _db.Players.AddRange(players);
+            _db.SaveChanges();
 
-            return View("Create");
+            var statuses = _db.Attributes.Select(attribute => new Status {AttributeId = attribute.AttributeId, GameId = game.GameId, Round = game.Round, LocationId = attribute.LocationId, TextValue1 = "", TextValue2 = "", Time = DateTime.Now}).ToList();
+            _db.Statuses.AddRange(statuses);
+
+            _db.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Manage(int id)
@@ -101,9 +104,32 @@ namespace LCARS.Areas.Admin.Controllers
                 .Select(x => x.FirstOrDefault());
             if (query.Any())
                 statuses = query.ToList();
-
             ViewBag.Statuses = statuses;
 
+            var locations = _db.Locations.Include(x => x.Attributes).Select(x => new LocationView
+            {
+                LocationId = x.LocationId,
+                Name = x.Name,
+                Attributes = x.Attributes.Select(y => new AttributeView
+                {
+                    AttributeId = y.AttributeId,
+                    Name = y.Name
+                }).ToList()
+            }).ToList();
+
+            var blah = new List<StatusView>();
+            var query2 = _db.Statuses.Where(x => x.GameId == game.GameId && x.Round == game.Round).OrderByDescending(x => x.Time).GroupBy(x => x.Time).Select(x => x.FirstOrDefault());
+            if (query2.Any())
+                blah = blah.ToList();
+
+            var result = locations.Select(x => new LocationView
+            {
+                LocationId = x.LocationId, Name = x.Name,
+                Attributes = query2.Select(y => new StatusView{StatusId = y.StatusId, TextValue1 = y.TextValue1, TextValue2 = y.TextValue2, Time = y.Time}).FirstOrDefault(y => y.LocationId == x.LocationId);
+            })
+            ViewBag.Locations = locations;
+
+            
             return View(game);
         }
     }

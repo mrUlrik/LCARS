@@ -221,7 +221,8 @@ namespace LCARS.Data
                 new Location { LocationId = 4, Name = "Medical Bay" },
                 new Location { LocationId = 5, Name = "Science Wing" },
                 new Location { LocationId = 6, Name = "Security Wing" },
-                new Location { LocationId = 7, Name = "Logistics" }
+                new Location { LocationId = 7, Name = "Logistics" },
+                new Location { LocationId = 8, Name = "" }
             };
             db.Locations.AddRange(locations);
             db.SaveChanges();
