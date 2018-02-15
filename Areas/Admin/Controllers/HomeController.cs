@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LCARS.Areas.Admin.Models;
+using LCARS.Data;
 using LCARS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,12 +21,12 @@ namespace LCARS.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var runningGames = _db.Games.Where(x => x.IsActive).Select(x =>
-                new GameView {Created = x.Created, GameId = x.GameId, IsActive = x.IsActive, Name = x.Name}).ToList();
+            var runningGames = _db.Games.Where(x => x.Status != GameStatus.Ended).Select(x =>
+                new GameView {Created = x.Created, GameId = x.GameId, Status = x.Status, Name = x.Name}).ToList();
             ViewBag.RunningGames = runningGames.Any() ? runningGames : new List<GameView>();
 
-            var pastGames = _db.Games.Where(x => !x.IsActive).Select(x =>
-                new GameView { Created = x.Created, GameId = x.GameId, IsActive = x.IsActive, Name = x.Name }).ToList();
+            var pastGames = _db.Games.Where(x => x.Status == GameStatus.Ended).Select(x =>
+                new GameView { Created = x.Created, GameId = x.GameId, Status = x.Status, Name = x.Name }).ToList();
             ViewBag.PastGames = pastGames.Any() ? pastGames : new List<GameView>();
 
             return View();
@@ -36,7 +37,7 @@ namespace LCARS.Areas.Admin.Controllers
             var game = new Game
             {
                 Created = DateTime.Now,
-                IsActive = true,
+                Status = GameStatus.Running,
                 Name = input.Name
             };
 

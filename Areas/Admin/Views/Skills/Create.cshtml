@@ -1,0 +1,26 @@
+﻿@model LCARS.Models.Skill
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container p-5">
+    <h1 class="text-info">Create Skill</h1>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <table class="table">
+            <tr>
+                <th><label asp-for="Name" class="control-label"></label></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </td>
+                <td><input type="submit" value="Save" class="btn btn-success" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

@@ -11,5 +11,6 @@ namespace LCARS.Models
 
         public List<Attribute> Attributes { get; set; }
         public List<Teleport> Teleports { get; set; }
+        public Drone Drone { get; set; }
     }
 }

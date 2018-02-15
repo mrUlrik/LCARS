@@ -1,0 +1,70 @@
+﻿@model LCARS.Models.Character
+@{
+    ViewData["Title"] = "Create Character";
+}
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js" integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js" integrity="sha384-xs+GqUCDt+6Dvcu3KIBv6DPHBfgr0+NwAWnBSzYWltOWQy8zvJDHyq0Kz3i4TVU3" crossorigin="anonymous"></script>
+}
+<div class="container p-5">
+    <h2 class="text-info">Create</h2>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <table class="table">
+            <tr>
+                <td colspan="2" class="border-top-0">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control form-control-lg" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Tips">Tips</label>
+                        <textarea asp-for="Tips" rows="3" class="form-control"></textarea>
+                        <span asp-validation-for="Tips" class="text-danger"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Role">Role</label>
+                        <input asp-for="Role" class="form-control form-control" />
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password">Passcode</label>
+                        <input asp-for="Password" class="form-control form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </td>
+                <td class="border-left">
+                    <div class="form-group">
+                        <label asp-for="TraitName">Trait</label>
+                        <input asp-for="TraitName" class="form-control form-control" />
+                        <span asp-validation-for="TraitName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TraitDescription">Description</label>
+                        <textarea asp-for="TraitDescription" rows="3" class="form-control"></textarea>
+                        <span asp-validation-for="TraitDescription" class="text-danger"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="form-group">
+                        <label asp-for="Story">Story</label>
+                        <textarea asp-for="Story" rows="6" class="form-control"></textarea>
+                        <span asp-validation-for="Story" class="text-danger"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

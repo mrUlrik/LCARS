@@ -1,0 +1,30 @@
+﻿@model IEnumerable<LCARS.Models.Character>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container p-5">
+    <h1 class="text-info">Characters <a href="@Url.Action("Create")"><small><sup><span class="fa fa-plus"></span></sup></small></a></h1>
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td colspan="3" class="border-top-0">
+                    <h3 class="text-primary">@Html.DisplayFor(modelItem => item.Name) <a href="@Url.Action("Edit", new {id = item.CharacterId})"><small><sup><span class="fa fa-edit"></span></sup></small></a> <a href="@Url.Action("Delete", new {id = item.CharacterId})"><small><sup><span class="fa fa-minus"></span></sup></small></a></h3>
+                    <span class="text-warning">@Html.DisplayFor(modelItem => item.Tips)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Role)</td>
+                <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                <td>
+                    <h4 class="text-primary">@Html.DisplayFor(modelItem => item.TraitName)</h4>
+                    @Html.DisplayFor(modelItem => item.TraitDescription)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">@Html.DisplayFor(modelItem => item.Story)</td>
+            </tr>
+        }
+    </table>
+</div>

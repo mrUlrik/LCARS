@@ -10,6 +10,10 @@ namespace LCARS.Models
         public string Name { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
+        public string Story { get; set; }
+        public string TraitName { get; set; }
+        public string TraitDescription { get; set; }
+        public string Tips { get; set; }
         
         public List<CharacterSkill> CharacterSkills { get; set; }
         public List<CharacterObjective> CharacterObjectives { get; set; }

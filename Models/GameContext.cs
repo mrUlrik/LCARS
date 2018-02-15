@@ -17,6 +17,8 @@ namespace LCARS.Models
         public DbSet<Location> Locations { get; set; }
         public DbSet<Attribute> Attributes { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<Drone> Drones { get; set; }
+        public DbSet<Mineral> Minerals { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
     }

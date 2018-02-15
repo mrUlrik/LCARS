@@ -1,27 +1,39 @@
 ﻿<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="https://fonts.googleapis.com/css?family=ABeeZee|Montserrat|Share+Tech+Mono" rel="stylesheet">
-    <link rel="stylesheet" href="/local/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/local/bootstrap.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <title>LCARS Administration</title>
 
     <style type="text/css">
-        h1, h3, .navbar { font-family: 'ABeeZee', sans-serif; }
+        h1, h3, .navbar {
+            font-family: 'ABeeZee', sans-serif;
+        }
 
-        h2, th, strong { font-family: 'Montserrat', sans-serif; }
+        h2, th, strong {
+            font-family: 'Montserrat', sans-serif;
+        }
 
         th {
             font-size: 0.8rem;
         }
 
-        .mono {  }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+        }
 
         .grid-value {
             font-family: 'Share Tech Mono', monospace;
             text-transform: uppercase;
             width: 4rem;
+        }
+
+        .border-left {
+            border-color: #444 !important;
         }
     </style>
 </head>
@@ -40,11 +52,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Characters</a>
-                    <a class="dropdown-item" href="#">Locations</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Characters")">Characters</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Locations")">Locations</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Objectives</a>
-                    <a class="dropdown-item" href="#">Skills</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Objectives")">Objectives</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Skills")">Skills</a>
                 </div>
             </li>
         </ul>
@@ -56,7 +68,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
     })
 </script>
 @if (IsSectionDefined("Scripts"))

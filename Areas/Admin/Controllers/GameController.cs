@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using LCARS.Areas.Admin.Models;
+﻿using LCARS.Areas.Admin.Models;
 using LCARS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using LCARS.Data;
 
 namespace LCARS.Areas.Admin.Controllers
 {
@@ -52,9 +52,9 @@ namespace LCARS.Areas.Admin.Controllers
             var game = new Game
             {
                 Created = DateTime.Now,
-                IsActive = true,
                 Name = input.Name,
-                Round = 1
+                Round = 1,
+                Status = GameStatus.Running
             };
 
             _db.Games.Add(game);
@@ -83,18 +83,45 @@ namespace LCARS.Areas.Admin.Controllers
 
         public IActionResult Manage(int id)
         {
-            var game = _db.Games
-                .Select(x =>
-                    new GameView
+            var record = _db.Games.SingleOrDefault(x => x.GameId == id);
+            if (record == null) return RedirectToAction("Index", "Home");
+
+            if (record.Status == GameStatus.NextRound)
+            {
+                var records = _db.Statuses.Where(x => x.GameId == record.GameId && x.Round == record.Round)
+                    .OrderByDescending(x => x.Time).GroupBy(x => new { x.AttributeId, x.LocationId })
+                    .Select(x => x.FirstOrDefault()).ToList();
+
+                record.Round++;
+                record.Status = GameStatus.Running;
+                _db.Games.Update(record);
+                _db.SaveChanges();
+
+                var newStatuses = records.Select(status => new Status()
                     {
-                        Created = x.Created,
-                        GameId = x.GameId,
-                        IsActive = x.IsActive,
-                        Name = x.Name,
-                        Round = x.Round
+                        Time = DateTime.Now,
+                        GameId = status.GameId,
+                        Round = record.Round,
+                        LocationId = status.LocationId,
+                        AttributeId = status.AttributeId,
+                        TextValue1 = status.TextValue1,
+                        TextValue2 = status.TextValue2
                     })
-                .SingleOrDefault(x => x.GameId == id && x.IsActive);
-            if (game == null) return RedirectToAction("Index", "Home");
+                    .ToList();
+                _db.Statuses.AddRange(newStatuses);
+                _db.SaveChanges();
+            }
+
+            var game = new GameView
+            {
+                Created = record.Created,
+                GameId = record.GameId,
+                Name = record.Name,
+                Round = record.Round,
+                Sector = record.Sector,
+                Slipgate = record.Slipgate,
+                Status = record.Status
+            };
 
             var players = _db.Players.Where(x => x.GameId == game.GameId).Include(x => x.Character).Select(x =>
                 new PlayerView
