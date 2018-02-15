@@ -16,12 +16,25 @@
 
         $('table td').on('change',
             function (evt, newValue) {
-                var status = {
-                    statusId: [$(this).attr('id')],
+                let success = false;
+                const status = {
+                    StatusId: $(this).attr('id'),
                     [$(this).attr('axis')]: newValue
                 };
-                alert(JSON.stringify(status));
-                return true;
+                $.ajax('@Url.Action("UpdateValue", "Status", new {Area = ""})', {
+                    type: 'PUT',
+                    data: JSON.stringify(status),
+                    contentType: 'application/json',
+                    async: false,
+                    complete: function (jqXHR, textStatus) {
+                        if (jqXHR.responseJSON === true) success = true;
+                        if (jsXHR.statusText !== "OK") {
+                            alert('Error communicating with the server. Error documented in browser console log.');
+                            console.log(jqXHR.responseText);
+                        }
+                    }
+                });
+                return success;
             });
     </script>
 }
@@ -60,71 +73,25 @@
                     <div class="col-6">
                         <h3>@location.Name</h3>
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-7">
                                 <table class="table table-sm" id="table-location-@location.LocationId">
-                                    @foreach (LCARS.Models.Attribute attribute in location.Attributes)
+                                    @foreach (AttributeView attribute in location.Attributes)
                                     {
-                                        var status = attribute.Statuses.OrderByDescending(x => x.Time).FirstOrDefault();
-                                        <tr data-toggle="tooltip" data-placement="top" title="@status?.Time">
+                                        <tr data-toggle="tooltip" data-placement="top" title="@attribute.Status.Time">
                                             <th>@attribute.Name</th>
-                                            <td class="grid-value text-right" axis="TextValue1" id="@status?.StatusId">@status?.TextValue1</td>
-                                            <td class="grid-value text-right" axis="TextValue2" id="@status?.StatusId">@status?.TextValue2</td>
+                                            <td class="grid-value text-right" axis="TextValue1" id="@attribute.Status.StatusId">@attribute.Status.TextValue1</td>
+                                            <td class="grid-value text-right" axis="TextValue2" id="@attribute.Status.StatusId">@attribute.Status.TextValue2</td>
                                         </tr>
                                     }
                                 </table>
                             </div>
-                            <div class="col-4">
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Andy</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Arianna</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Birkett</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Courtney</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Courtney</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Erica</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Ethan</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Jesus</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Kristin</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Luis</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Mace</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Rhett</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Sarah</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Sarah</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Shawn</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Sarah</p>
-                                </div>
-                                <div class="card float-left px-1" style="width: 5rem;">
-                                    <p class="card-text">Sarah</p>
-                                </div>
+                            <div class="col-5">
+                                @foreach (TeleportView teleport in location.Teleports)
+                                {
+                                    <div class="card float-left px-1" data-placement="top" title="@teleport.CharacterName" style="width: 5rem;">
+                                        <p class="card-text text-truncate">@teleport.PlayerName</p>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

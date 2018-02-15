@@ -1,4 +1,6 @@
-﻿namespace LCARS.Areas.Admin.Models
+﻿using LCARS.Models;
+
+namespace LCARS.Areas.Admin.Models
 {
     public class AttributeView
     {

@@ -2,11 +2,11 @@
 @model GameView
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js" integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.js" integrity="sha384-+U6GJ+F6DP8MVwdjdb+6ZfY2S85tZu6hIinFEdbziA0fAfGXlV7xlW9x9rdeY2/o" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js" integrity="sha384-xs+GqUCDt+6Dvcu3KIBv6DPHBfgr0+NwAWnBSzYWltOWQy8zvJDHyq0Kz3i4TVU3" crossorigin="anonymous"></script>
     <script src="js/mindmup-editabletable.js"></script>
 }
-<div class="container">
-    <h1>New Game</h1>
+<div class="container p-5">
+    <h2>New Game</h2>
     <p>Enter the names of the individuals playing and select their character. Their names are for your convenience and will only be seen in the administration section.</p>
 
     @using (Html.BeginForm("Insert", "Game"))

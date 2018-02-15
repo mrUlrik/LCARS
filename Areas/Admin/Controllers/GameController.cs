@@ -67,8 +67,17 @@ namespace LCARS.Areas.Admin.Controllers
 
             var statuses = _db.Attributes.Select(attribute => new Status {AttributeId = attribute.AttributeId, GameId = game.GameId, Round = game.Round, LocationId = attribute.LocationId, TextValue1 = "", TextValue2 = "", Time = DateTime.Now}).ToList();
             _db.Statuses.AddRange(statuses);
-
             _db.SaveChanges();
+
+            var teleports = new[]
+            {
+                new Teleport { GameId = 1, LocationId = 2, Round = 1, PlayerId = 1},
+                new Teleport { GameId = 1, LocationId = 2, Round = 1, PlayerId = 2},
+                new Teleport { GameId = 1, LocationId = 2, Round = 1, PlayerId = 3}
+            };
+            _db.Teleports.AddRange(teleports);
+            _db.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -98,37 +107,25 @@ namespace LCARS.Areas.Admin.Controllers
                 }).ToList();
             game.Players = players;
 
-            var statuses = new List<Status>();
-            var query = _db.Statuses.Where(x => x.GameId == game.GameId && x.Round == game.Round)
-                .OrderByDescending(x => x.Time).GroupBy(x => new {x.AttributeId, x.LocationId})
-                .Select(x => x.FirstOrDefault());
-            if (query.Any())
-                statuses = query.ToList();
-            ViewBag.Statuses = statuses;
+            var locationAttributes = _db.Locations.Include(x => x.Attributes).ToList();
+            var teleports = _db.Teleports.Include(x => x.Player).Where(x => x.GameId == game.GameId && x.Round == game.Round).ToList();
+            var statuses = _db.Statuses.Where(x => x.GameId == game.GameId && x.Round == game.Round)
+                .OrderByDescending(x => x.Time).GroupBy(x => new { x.AttributeId, x.LocationId })
+                .Select(x => x.FirstOrDefault()).ToList();
 
-            var locations = _db.Locations.Include(x => x.Attributes).Select(x => new LocationView
+            var locations = locationAttributes.Select(x => new LocationView
             {
                 LocationId = x.LocationId,
                 Name = x.Name,
                 Attributes = x.Attributes.Select(y => new AttributeView
                 {
                     AttributeId = y.AttributeId,
-                    Name = y.Name
-                }).ToList()
+                    Name = y.Name,
+                    Status = statuses.Where(z => z.AttributeId == y.AttributeId).Select(z => new StatusView{StatusId = z.StatusId, TextValue1 = z.TextValue1, TextValue2 = z.TextValue2, Time = z.Time}).SingleOrDefault()
+                }).ToList(),
+                Teleports = teleports.Where(z => z.LocationId == x.LocationId).Select(z => new TeleportView{PlayerName = z.Player.Name}).ToList()
             }).ToList();
-
-            var blah = new List<StatusView>();
-            var query2 = _db.Statuses.Where(x => x.GameId == game.GameId && x.Round == game.Round).OrderByDescending(x => x.Time).GroupBy(x => x.Time).Select(x => x.FirstOrDefault());
-            if (query2.Any())
-                blah = blah.ToList();
-
-            var result = locations.Select(x => new LocationView
-            {
-                LocationId = x.LocationId, Name = x.Name,
-                Attributes = query2.Select(y => new StatusView{StatusId = y.StatusId, TextValue1 = y.TextValue1, TextValue2 = y.TextValue2, Time = y.Time}).FirstOrDefault(y => y.LocationId == x.LocationId);
-            })
             ViewBag.Locations = locations;
-
             
             return View(game);
         }
