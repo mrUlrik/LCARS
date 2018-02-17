@@ -130,14 +130,22 @@
     export default {
         data() {
             return {
+                authorized: false,
                 characterId: 0,
                 characterName: '',
                 hours: '',
                 minutes: ''
             }
         },
+        created() {
+            
+        },
         beforeMount() {
             this.updateDateTime();
+            this.$on('authorized', function (value) {
+                this.authorized = value;
+                alert("yay");
+            });
         },
         mounted() {
             setInterval(this.updateDateTime, 1000);
