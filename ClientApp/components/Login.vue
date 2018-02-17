@@ -1,21 +1,21 @@
 ﻿<template>
     <div class="container">
-        <div v-for="game in games">
-            <p>{{game}}</p>
-        </div>
-        <div class="frame">
-            <div class="left accent"></div>
-            <div class="caption">
-                <div class="left">Console 01</div>
-            </div>
-            <div class="right accent"></div>
-            <div class="fill"></div>
+        <select v-model="user.gameId">
+            <option v-for="game in games" v-bind:value="game.gameId">{{game.name}}</option>
+        </select>
+        <div class="divider">
+            <div class="cell left">&nbsp;</div>
+            <div class="cell caption">Console 01</div>
+            <div class="cell right"></div>
+            <div class="cell fill">&nbsp;</div>
+
         </div>
         <div class="row pb-3">
             <div class="col"></div>
             <div class="col-5"><input type="text" class="form-control" /></div>
             <div class="col"></div>
         </div>
+        <h1>{{user.gameId}}</h1>
         <div class="row">
             <div class="col"></div>
             <div class="col-1 p-0">
@@ -39,74 +39,101 @@
     </div>
 </template>
 
-<style scoped>
-    .keypad {
-        background-color: #DD6644;
-    }
+<script>
+    import Axios from 'axios';
 
+    export default {
+        data() {
+            return {
+                user: {
+                    gameId: 0
+                },
+                games: [],
+                status: {
+                    complete: null,
+                    notFound: null
+                },
+                errors: []
+            }
+        },
+        beforeMount: function () {
+            this.loadGames();
+        },
+        methods: {
+            loadGames: function () {
+                this.status.complete = false;
+                let uri = '/api/game';
+                Axios.get(uri)
+                    .then(response => {
+                        if (response.data) {
+                            this.games = response.data;
+                        }
+                    })
+                    .catch(error => { console.log(error); });
+            }
+        }
+    }
+</script>
+
+<style scoped>
     .num {
         background-color: #DD6644;
     }
 
-        .num.num-1 { border-radius: 0 0 0 1.6rem; }
-        .num.num-3 { border-radius: 0 0 1.6rem 0; }
-        .num.num-7 { border-radius: 1.6rem 0 0 0; }
-        .num.num-9 { border-radius: 0 1.6rem 0 0; }
-        .num.num-0 { border-radius: 0 0 1.6rem 1.6rem; }
-        
-    .frame {
-        overflow: hidden;
-        height: 1.6rem;
-        line-height: 1.6rem;
+        .num.num-1 {
+            border-radius: 0 0 0 1.6rem;
+        }
+
+        .num.num-3 {
+            border-radius: 0 0 1.6rem 0;
+        }
+
+        .num.num-7 {
+            border-radius: 1.6rem 0 0 0;
+        }
+
+        .num.num-9 {
+            border-radius: 0 1.6rem 0 0;
+        }
+
+        .num.num-0 {
+            border-radius: 0 0 1.6rem 1.6rem;
+        }
+
+    .divider {
+        padding-bottom: 2rem;
     }
 
-        .frame > .left {
-            background-color: #DD6644;
-            border-radius: 1.6rem 0 0 1.6rem;
+        .divider .cell {
             float: left;
-            height: inherit;
-            width: 25px;
-            margin-right: 10px;
+            height: 1.6rem;
+            line-height: 1.6rem;
         }
 
-            .frame > .left.accent {
-                background-color: #CC99CC;
-            }
+        .divider > .left {
+            background-color: #CC99CC;
+            border-radius: 1.6rem 0 0 1.6rem;
+            margin-right: 10px;
+            width: 25px;
+        }
 
-        .frame > .right {
+        .divider > .caption {
+            font-size: 2rem;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
+
+        .divider > .fill {
             background-color: #DD6644;
+            float: unset;
+            overflow: hidden;
+        }
+
+        .divider > .right {
+            background-color: #CC99CC;
             border-radius: 0 1.6rem 1.6rem 0;
             float: right;
-            height: inherit;
-            width: 25px;
             margin-left: 10px;
-        }
-
-            .frame > .right.accent {
-                background-color: #CC99CC;
-            }
-
-        .frame > .caption {
-            text-transform: uppercase;
-            font-size: 2rem;
-        }
-
-            .frame > .caption > .left {
-                float: left;
-                margin-right: 10px;
-            }
-
-            .frame > .caption > .right {
-                float: right;
-                margin-left: 10px;
-            }
-
-        .frame > .fill {
-            overflow: hidden;
-            height: inherit;
-            background-color: #DD6644;
+            width: 25px;
         }
 </style>
-
-<script>
-</script>
