@@ -1,6 +1,9 @@
-﻿using LCARS.Models;
+﻿using System.Collections.Generic;
+using LCARS.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using LCARS.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace LCARS.Controllers
 {
@@ -13,6 +16,12 @@ namespace LCARS.Controllers
         public GameController(GameContext context)
         {
             _db = context;
+        }
+
+        [HttpGet]
+        public List<Game> GetList()
+        {
+            return _db.Games.Include(x => x.Players).ThenInclude(x => x.Character).Where(x => x.Status != GameStatus.Ended).ToList();
         }
 
         [HttpPut]

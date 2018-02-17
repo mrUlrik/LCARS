@@ -33,6 +33,13 @@
     body {
         text-transform: uppercase;
     }
+
+    .container {
+        color: #FFCC66;
+        font-family: 'Helvetica Ultra Compressed', 'Swiss911BT-UltraCompressed', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding: 1rem;
+    }
+
     a, a:active, a:hover {
         color: #fff;
         text-decoration: none;
@@ -123,6 +130,8 @@
     export default {
         data() {
             return {
+                characterId: 0,
+                characterName: '',
                 hours: '',
                 minutes: ''
             }

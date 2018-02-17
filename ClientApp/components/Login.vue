@@ -1,5 +1,8 @@
 ﻿<template>
     <div class="container">
+        <div v-for="game in games">
+            <p>{{game}}</p>
+        </div>
         <div class="frame">
             <div class="left accent"></div>
             <div class="caption">
@@ -8,33 +11,49 @@
             <div class="right accent"></div>
             <div class="fill"></div>
         </div>
+        <div class="row pb-3">
+            <div class="col"></div>
+            <div class="col-5"><input type="text" class="form-control" /></div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-1 p-0">
+                <div class="num num-7 text-center m-1 p-1 mb-2">7</div>
+                <div class="num num-4 text-center m-1 p-1 mb-2">4</div>
+                <div class="num num-1 text-center m-1 p-1 mb-2">1</div>
+            </div>
+            <div class="col-1 p-0">
+                <div class="num num-8 text-center m-1 p-1 mb-2">8</div>
+                <div class="num num-5 text-center m-1 p-1 mb-2">5</div>
+                <div class="num num-2 text-center m-1 p-1 mb-2">2</div>
+                <div class="num num-0 text-center m-1 p-1 mb-2">0</div>
+            </div>
+            <div class="col-1 p-0">
+                <div class="num num-9 text-center m-1 p-1 mb-2">9</div>
+                <div class="num num-6 text-center m-1 p-1 mb-2">6</div>
+                <div class="num num-3 text-center m-1 p-1 mb-2">3</div>
+            </div>
+            <div class="col"></div>
+        </div>
     </div>
 </template>
 
 <style scoped>
-    .container {
-        color: #FFCC66;
-        font-family: 'Helvetica Ultra Compressed', 'Swiss911BT-UltraCompressed', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        padding: 1rem;
+    .keypad {
+        background-color: #DD6644;
     }
 
-    h1 {
-        font-weight: normal;
-        text-transform: uppercase;
-        margin-bottom: 0;
-        padding-bottom: 0;
+    .num {
+        background-color: #DD6644;
     }
 
-    p {
-        font-size: 1.2rem;
-        line-height: 1.6rem;
-    }
-
-    .content {
-        padding-left: 35px;
-        padding-right: 35px;
-    }
-
+        .num.num-1 { border-radius: 0 0 0 1.6rem; }
+        .num.num-3 { border-radius: 0 0 1.6rem 0; }
+        .num.num-7 { border-radius: 1.6rem 0 0 0; }
+        .num.num-9 { border-radius: 0 1.6rem 0 0; }
+        .num.num-0 { border-radius: 0 0 1.6rem 1.6rem; }
+        
     .frame {
         overflow: hidden;
         height: 1.6rem;
@@ -90,29 +109,4 @@
 </style>
 
 <script>
-    export default {
-        data() {
-            return {
-                hours: '',
-                minutes: ''
-            }
-        },
-        beforeMount() {
-            this.updateDateTime();
-        },
-        mounted() {
-            setInterval(this.updateDateTime, 1000);
-        },
-        methods: {
-            updateDateTime() {
-                let now = new Date();
-
-                this.hours = this.getZeroPad(now.getHours());
-                this.minutes = this.getZeroPad(now.getMinutes());
-            },
-            getZeroPad(n) {
-                return (parseInt(n, 10) >= 10 ? '' : '0') + n;
-            }
-        }
-    }
 </script>
