@@ -1,10 +1,10 @@
 ﻿<template>
-    <div class="container">
-        <div v-if="authenitcated">
+    <div class="container p-0">
+        <div v-if="authorized">
             <div class="row">
                 <div class="col-auto bottom-y-axis bg-info"></div>
                 <div class="col text-right">
-                    <h1 class="header">ACTION: <span class="text-primary">Turbolift</span></h1>
+                    <h1 class="header">Round: <span class="text-primary">{{game.round}}</span></h1>
                 </div>
             </div>
             <div class="row mt-1">
@@ -24,9 +24,9 @@
             <div class="row mt-1 mb-1">
                 <div class="col-auto bottom bg-secondary"></div>
                 <div class="col-3 bottom-x-axis bg-info ml-1"></div>
-                <div class="col bg-info ml-1 text-right">Orry Deason</div>
+                <div class="col bg-info ml-1 text-right">{{player.character.name}}</div>
             </div>
-            <router-view></router-view>
+            <router-view :game="game" :player="player"></router-view>
         </div>
         <div v-else>
             <div class="divider">
@@ -261,6 +261,7 @@
 
 <script>
     import Axios from 'axios';
+    //import saveState from 'vue-save-state';
 
     export default {
         data() {
@@ -268,21 +269,21 @@
                 authorized: false,
                 game: null,
                 games: null,
-
                 player: null,
                 status: {
                     complete: null,
                     notFound: null
                 },
                 password: '',
-                errors: [],
                 invalid: false,
                 selectUsername: false,
                 playerId: null
             }
         },
+        //mixins: [saveState],
         beforeMount: function () {
-            this.loadGames();
+            if (!this.game)
+                this.loadGames();
         },
         watch: {
             password: function (val) {
@@ -293,7 +294,7 @@
                 if (val.length === 4) {
                     if (val === this.player.character.password) {
                         this.authorized = true;
-                        this.$emit('authorized', true);
+                        this.games = null;
                     } else {
                         this.invalid = true;
                     }
@@ -308,6 +309,9 @@
                     this.player = this.game.players.find(this.selectPlayer);
                     this.selectUsername = false;
                 }
+            },
+            authorized: function (val) {
+                if (val) setInterval(this.refreshGame, 1000);
             }
         },
         methods: {
@@ -338,7 +342,22 @@
             },
             selectPlayer: function (player) {
                 return player.playerId === this.playerId;
+            },
+            refreshGame: function () {
+                let uri = ['/api/game', this.game.gameId].join('/');
+                Axios.get(uri)
+                    .then(response => {
+                        if (response.data) {
+                            this.game = response.data;
+                        }
+                    })
+                    .catch(error => { console.log(error); });
             }
+            /*getSaveStateConfig() {
+                return {
+                    'cacheKey': 'App',
+                };
+            }, */
         }
     }
 </script>

@@ -6,6 +6,7 @@ namespace LCARS.Areas.Admin.Models
     {
         public int AttributeId { get; set; }
         public string Name { get; set; }
+        public string Abbreviated { get; set; }
 
         public StatusView Status { get; set; }
     }

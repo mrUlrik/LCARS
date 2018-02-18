@@ -9,6 +9,7 @@ namespace LCARS.Models
         [Key]
         public int AttributeId { get; set; }
         public string Name { get; set; }
+        public string Abbreviated { get; set; }
         public int? SkillId { get; set; }
         public int? LocationId { get; set; }
         public VariableType VariableType { get; set; }

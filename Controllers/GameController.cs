@@ -24,6 +24,12 @@ namespace LCARS.Controllers
             return _db.Games.Include(x => x.Players).ThenInclude(x => x.Character).Where(x => x.Status != GameStatus.Ended).ToList();
         }
 
+        [HttpGet("{id}")]
+        public Game GetGame(int id)
+        {
+            return _db.Games.FirstOrDefault(x => x.GameId == id);
+        }
+
         [HttpPut]
         public bool UpdateValue([FromBody] Game input)
         {

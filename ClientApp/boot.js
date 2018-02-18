@@ -11,15 +11,13 @@ import App from './App.vue';
 import Drone from './components/Drone.vue';
 import Home from './components/Home.vue';
 import Location from './components/Location.vue';
-import Login from './components/Login.vue';
 import Ship from './components/Ship.vue';
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/drone', component: Drone },
-    { path: '/location', component: Location },
-    { path: '/login', component: Login },
-    { path: '/ship', component: Ship, props: { userId: 200 } }
+    { path: '/', component: Home, props: true },
+    { path: '/drone', component: Drone, props: true },
+    { path: '/location', component: Location, props: true },
+    { path: '/ship', component: Ship, props: true }
 ];
 
 const router = new VueRouter({
@@ -33,4 +31,3 @@ const vm = new Vue({
     router,
     render: h => h(App)
 });
-
