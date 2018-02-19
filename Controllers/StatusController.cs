@@ -44,6 +44,12 @@ namespace LCARS.Controllers
                 .Include(x => x.CharacterSkills).ThenInclude(x => x.Skill).FirstOrDefault(x => x.CharacterId == id);
         }
 
+        [HttpGet("locations")]
+        public List<LocationView> GetLocations()
+        {
+            return _db.Locations.Select(x => new LocationView{Abbreviated = x.});
+        }
+
         [HttpGet("locations/{id}")]
         public List<LocationView> GetLocations(int id)
         {

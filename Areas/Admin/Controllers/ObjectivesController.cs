@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LCARS.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LCARS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ObjectivesController : Controller
     {
         private readonly GameContext _context;

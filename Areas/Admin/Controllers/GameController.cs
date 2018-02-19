@@ -7,10 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LCARS.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LCARS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class GameController : Controller
     {
         private readonly GameContext _db;
