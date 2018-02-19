@@ -8,7 +8,7 @@
     <Authors>mrUlrik</Authors>
     <Company>Ulritech</Company>
     <Product>LCARS Fan Game</Product>
-
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,6 +34,12 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Default\Index.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <Target Name="CustomCollectFiles">
