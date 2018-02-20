@@ -17,19 +17,19 @@
                 </div>
                 <div class="row mb-1">
                     <div class="col-auto top-y-axis bg-info"></div>
-                    <div class="col bg-warning ml-1 button" v-on:click="locationName = bridge.name">{{bridge.name}}</div>
-                    <div class="col bg-warning ml-1 button" v-on:click="locationName = communications.name">{{communications.name}}</div>
-                    <div class="col bg-warning ml-1 button" v-on:click="locationName = engineering.name">{{engineering.name}}</div>
+                    <div class="col bg-warning ml-1 button" v-on:click="locationId = bridge.locationId">{{bridge.name}}</div>
+                    <div class="col bg-warning ml-1 button" v-on:click="locationId = communications.locationId">{{communications.name}}</div>
+                    <div class="col bg-warning ml-1 button" v-on:click="locationId = engineering.locationId">{{engineering.name}}</div>
                 </div>
                 <div class="row mb-1">
                     <div class="col-auto top-y-axis bg-info"></div>
-                    <div class="col bg-success ml-1 button-wide" v-on:click="locationName = medical.name">{{medical.name}}</div>
-                    <div class="col bg-success ml-1 button-wide" v-on:click="locationName = science.name">{{science.name}}</div>
+                    <div class="col bg-success ml-1 button-wide" v-on:click="locationId = medical.locationId">{{medical.name}}</div>
+                    <div class="col bg-success ml-1 button-wide" v-on:click="locationId = science.locationId">{{science.name}}</div>
                 </div>
                 <div class="row mb-1">
-                    <div class="col-auto top-y-axis bg-info" v-on:click="locationName = logistics.name"></div>
-                    <div class="col bg-secondary ml-1 button-wide" v-on:click="locationName = logistics.name">{{logistics.name}}</div>
-                    <div class="col bg-secondary ml-1 button-wide" v-on:click="locationName = security.name">{{security.name}}</div>
+                    <div class="col-auto top-y-axis bg-info" v-on:click="locationId = logistics.locationId"></div>
+                    <div class="col bg-secondary ml-1 button-wide" v-on:click="locationId = logistics.locationId">{{logistics.name}}</div>
+                    <div class="col bg-secondary ml-1 button-wide" v-on:click="locationId = security.locationId">{{security.name}}</div>
                 </div>
             </div>
             <div v-if="locationName">
@@ -51,7 +51,7 @@
     export default {
         data() {
             return {
-                locationName: null,
+                locationId: null,
                 loaded: false,
                 locations: [
                     {
