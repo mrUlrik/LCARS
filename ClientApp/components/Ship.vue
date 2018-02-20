@@ -181,21 +181,11 @@
                                 "attributeId": 0,
                                 "name": "",
                                 "abbreviated": "",
-                                "status": {
-                                    "statusId": 0,
-                                    "textValue1": "",
-                                    "textValue2": "",
-                                    "time": ""
-                                }
+                                "skillId": 0,
+                                "status": null
                             }
                         ],
-                        "teleports": [
-                            {
-                                "playerName": "",
-                                "characterName": "",
-                                "locationId": 0
-                            }
-                        ]
+                        "teleports": null
                     }
                 ]
             }

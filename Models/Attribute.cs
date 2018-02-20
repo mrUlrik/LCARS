@@ -15,5 +15,6 @@ namespace LCARS.Models
         public VariableType VariableType { get; set; }
 
         public List<Status> Statuses { get; set; }
+        public Skill Skill { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using LCARS.Areas.Admin.Models;
 using LCARS.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,7 @@ namespace LCARS.Controllers
         [HttpGet("locations")]
         public List<LocationView> GetLocations()
         {
-            return _db.Locations.Select(x => new LocationView{Abbreviated = x.});
+            return _db.Locations.Include(x => x.Attributes).Select(x => new LocationView{Abbreviated = x.Abbreviated, LocationId = x.LocationId, Name = x.Name, Attributes = x.Attributes.Select(y => new AttributeView {Abbreviated = y.Abbreviated, AttributeId = y.AttributeId, Name = y.Name, SkillId = y.SkillId}).ToList() }).ToList();
         }
 
         [HttpGet("locations/{id}")]

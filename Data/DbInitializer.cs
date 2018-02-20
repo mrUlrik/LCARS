@@ -32,7 +32,6 @@ namespace LCARS.Data
                 new Location { LocationId = 5, Name = "Science Wing", Abbreviated = "Science" },
                 new Location { LocationId = 6, Name = "Security Wing", Abbreviated = "Security" },
                 new Location { LocationId = 7, Name = "Logistics", Abbreviated = "Logistics" },
-                new Location { LocationId = 8, Name = "" }
             };
             db.Locations.AddRange(locations);
             db.SaveChanges();
@@ -413,10 +412,10 @@ namespace LCARS.Data
                 new Attribute { AttributeId = 20, Name = "Cargo Bay", Abbreviated = "Cargo Bay", LocationId = 7, VariableType = VariableType.None},
                 new Attribute { AttributeId = 21, Name = "Armory", Abbreviated = "Armory", LocationId = 7, VariableType = VariableType.None},
                 new Attribute { AttributeId = 22, Name = "Mining Drone Control", Abbreviated = "Mining Drone Control", SkillId = 3, LocationId = 7, VariableType = VariableType.Drones},
-                new Attribute { AttributeId = 23, Name = "Defend Self", Abbreviated = "Defend Self", LocationId = 8, VariableType = VariableType.None},
-                new Attribute { AttributeId = 24, Name = "Fight Aliens", Abbreviated = "Fight Aliens", SkillId = 6, LocationId = 8, VariableType = VariableType.None},
-                new Attribute { AttributeId = 25, Name = "Patch Station", Abbreviated = "Patch Station", LocationId = 8, VariableType = VariableType.None},
-                new Attribute { AttributeId = 26, Name = "Repair Station", Abbreviated = "Repair Station", SkillId = 2, LocationId = 8, VariableType = VariableType.None},
+                new Attribute { AttributeId = 23, Name = "Defend Self", Abbreviated = "Defend Self", VariableType = VariableType.None},
+                new Attribute { AttributeId = 24, Name = "Fight Aliens", Abbreviated = "Fight Aliens", SkillId = 6, VariableType = VariableType.None},
+                new Attribute { AttributeId = 25, Name = "Patch Station", Abbreviated = "Patch Station", VariableType = VariableType.None},
+                new Attribute { AttributeId = 26, Name = "Repair Station", Abbreviated = "Repair Station", SkillId = 2, VariableType = VariableType.None},
             };
             db.Attributes.AddRange(attributes);
             db.SaveChanges();
