@@ -19,6 +19,7 @@ namespace LCARS.Models
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Drone> Drones { get; set; }
         public DbSet<Mineral> Minerals { get; set; }
+        public DbSet<PlayerAction> PlayerActions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
     }

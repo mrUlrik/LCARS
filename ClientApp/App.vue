@@ -26,7 +26,17 @@
                 <div class="col-3 bottom-x-axis bg-info ml-1"></div>
                 <div class="col bg-info ml-1 text-right">{{player.character.name}}</div>
             </div>
-            <router-view :game="game" :player="player"></router-view>
+            <div v-if="status !== 4">
+                <router-view :game="game" :player="player"></router-view>
+            </div>
+            <div v-else>
+                <div class="divider p-5">
+                    <div class="cell left">&nbsp;</div>
+                    <div class="cell caption">Game Paused</div>
+                    <div class="cell right"></div>
+                    <div class="cell fill">&nbsp;</div>
+                </div>
+            </div>
         </div>
         <div v-else>
             <div class="divider">
@@ -277,7 +287,8 @@
                 password: '',
                 invalid: false,
                 selectUsername: false,
-                playerId: null
+                playerId: null,
+                round: 0
             }
         },
         //mixins: [saveState],
@@ -349,6 +360,12 @@
                     .then(response => {
                         if (response.data) {
                             this.game = response.data;
+                            if (this.round !== this.game.round) {
+                                this.round = this.game.round;
+                            }
+                            if (this.status !== this.game.status) {
+                                this.status = this.game.status;
+                            }
                         }
                     })
                     .catch(error => { console.log(error); });

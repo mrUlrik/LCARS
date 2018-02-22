@@ -71,15 +71,6 @@ namespace LCARS.Areas.Admin.Controllers
             _db.Statuses.AddRange(statuses);
             _db.SaveChanges();
 
-            var teleports = new[]
-            {
-                new Teleport { GameId = 1, LocationId = 2, Round = 1, PlayerId = 1},
-                new Teleport { GameId = 1, LocationId = 2, Round = 1, PlayerId = 2},
-                new Teleport { GameId = 1, LocationId = 2, Round = 1, PlayerId = 3}
-            };
-            _db.Teleports.AddRange(teleports);
-            _db.SaveChanges();
-
             return RedirectToAction("Index", "Home");
         }
 
@@ -155,6 +146,8 @@ namespace LCARS.Areas.Admin.Controllers
                 Teleports = teleports.Where(z => z.LocationId == x.LocationId).Select(z => new TeleportView{PlayerName = z.Player.Name}).ToList()
             }).ToList();
             ViewBag.Locations = locations;
+
+            ViewBag.PlayerActions = _db.PlayerActions.Where(x => x.GameId == game.GameId && x.Round == game.Round).Include(x => x.Attribute).Include(x => x.Location).Include(x => x.Player).ThenInclude(x => x.Character).ToList();
             
             return View(game);
         }

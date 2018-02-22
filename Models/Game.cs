@@ -16,6 +16,7 @@ namespace LCARS.Models
         public int Round { get; set; }
 
         public GameStatus Status { get; set; }
+        public List<PlayerAction> PlayerActions { get; set; }
 
         public List<Player> Players { get; set; }
     }

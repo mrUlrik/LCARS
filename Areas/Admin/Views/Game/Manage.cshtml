@@ -1,5 +1,6 @@
 ﻿@using LCARS.Areas.Admin.Models
 @using LCARS.Data
+@using LCARS.Models
 @model LCARS.Areas.Admin.Models.GameView
 @section Scripts {
     <script src="/local/mindmup-editabletable.js"></script>
@@ -176,27 +177,16 @@
                     <th>Action</th>
                     <th>Variables</th>
                 </tr>
-                <tr>
-                    <th scrope="row">Andy</th>
-                    <td>Randy Hardthrottle</td>
-                    <td>Bridge</td>
-                    <td>Use Help</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scrope="row">Arianna</th>
-                    <td>Andromeda Galaxia</td>
-                    <td>Communications</td>
-                    <td>Use Short Range</td>
-                    <td>B</td>
-                </tr>
-                <tr>
-                    <th scrope="row">Birkett</th>
-                    <td>Bisquette Stickson</td>
-                    <td>Communications</td>
-                    <td>Use Short Trange</td>
-                    <td>D</td>
-                </tr>
+                @foreach (PlayerAction action in ViewBag.PlayerActions)
+                {
+                    <tr>
+                        <th scope="row">@action.Player.Name</th>
+                        <td>@action.Player.Character.Name</td>
+                        <td>@action.Location.Name</td>
+                        <td>@action.Attribute.Name</td>
+                        <td>@action.On</td>
+                    </tr>
+                }
             </table>
         </div>
     </div>
