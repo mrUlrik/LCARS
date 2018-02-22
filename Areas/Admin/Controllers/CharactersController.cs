@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using LCARS.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace LCARS.Areas.Admin.Controllers
@@ -59,6 +60,7 @@ namespace LCARS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Skills = _context.Skills.Select(x => new Checkbox {CheckboxId = x.SkillId, CheckboxName = x.Name, CheckboxEnabled = character.CharacterSkills.Any(y => y.SkillId == x.SkillId)});
             return View(character);
         }
 

@@ -9,6 +9,7 @@ namespace LCARS.Models
         public int LocationId { get; set; }
         public string Name { get; set; }
         public string Abbreviated { get; set; }
+        public string Status { get; set; }
 
         public List<Attribute> Attributes { get; set; }
         public List<Teleport> Teleports { get; set; }

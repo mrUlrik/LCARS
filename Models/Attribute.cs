@@ -16,5 +16,6 @@ namespace LCARS.Models
 
         public List<Status> Statuses { get; set; }
         public Skill Skill { get; set; }
+        public Location Location { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace LCARS.Models
 {
@@ -7,6 +8,7 @@ namespace LCARS.Models
         [Key]
         public int TeleportId { get; set; }
         public int GameId { get; set; }
+        public DateTime Time { get; set; }
         public int LocationId { get; set; }
         public int Round { get; set; }
         public int PlayerId { get; set; }

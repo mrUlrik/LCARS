@@ -61,7 +61,6 @@
         </div>
         <div class="row mb-1">
             <div class="col-auto top-y-axis bg-info">Status</div>
-            <div class="col bg-success ml-1 button px-2"><router-link to="/drone">Drone</router-link></div>
             <div class="col bg-success ml-1 button px-2"><router-link to="/ship">Ship</router-link></div>
         </div>
     </div>

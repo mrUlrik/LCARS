@@ -19,6 +19,7 @@ namespace LCARS.Controllers
         [HttpPut]
         public bool InsertValue([FromBody] Teleport input)
         {
+            input.Time = DateTime.Now;
             _db.Teleports.Add(input);
             var result = _db.SaveChanges();
 

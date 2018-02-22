@@ -392,7 +392,7 @@ namespace LCARS.Data
             {
                 new Attribute { AttributeId = 1, Name = "Helm", Abbreviated = "Helm", SkillId = 3, LocationId = 1, VariableType = VariableType.None},
                 new Attribute { AttributeId = 2, Name = "Battle Stations", Abbreviated = "Battle Stations", SkillId = 6, LocationId = 1, VariableType = VariableType.MultipleChoice},
-                new Attribute { AttributeId = 3, Name = "Point Defense Systems", Abbreviated = "Point Defense Systems", SkillId = 6, LocationId = 1, VariableType = VariableType.MultipleChoice},
+                new Attribute { AttributeId = 3, Name = "Point Defense Systems", Abbreviated = "Pt Def Systems", SkillId = 6, LocationId = 1, VariableType = VariableType.MultipleChoice},
                 new Attribute { AttributeId = 4, Name = "Short Range Scanners", Abbreviated = "Short Range Scanners", SkillId = 4, LocationId = 2, VariableType = VariableType.None},
                 new Attribute { AttributeId = 5, Name = "Long Range Scanners", Abbreviated = "Long Range Scanners", SkillId = 4, LocationId = 2, VariableType = VariableType.MultipleChoice},
                 new Attribute { AttributeId = 6, Name = "Requisition Line", Abbreviated = "Requisition Line", SkillId = 1, LocationId = 2, VariableType = VariableType.None},

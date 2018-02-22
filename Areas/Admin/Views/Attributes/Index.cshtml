@@ -1,0 +1,29 @@
+﻿@model IEnumerable<LCARS.Models.Attribute>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container p-5">
+    <h1 class="text-info">Attributes <a href="@Url.Action("Create")"><small><sup><span class="fa fa-plus"></span></sup></small></a></h1>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Abbreviated</th>
+            <th>Location</th>
+            <th>Skill</th>
+            <th>VariableType</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Abbreviated)</td>
+                <td>@Html.DisplayFor(modelItem => item.Location.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Skill.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.VariableType)</td>
+                <td><a asp-action="Edit" asp-route-id="@item.AttributeId">Edit</a> | <a asp-action="Delete" asp-route-id="@item.AttributeId">Delete</a></td>
+            </tr>
+        }
+    </table>
+</div>

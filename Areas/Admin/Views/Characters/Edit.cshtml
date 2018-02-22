@@ -59,6 +59,22 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="CharacterObjectives">Objectives</label>
+                        <input asp-for="Role" class="form-control form-control" />
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    </div>
+                </td>
+                <td class="border-left">
+                    <div class="form-group">
+                        <label asp-for="CharacterSkills">Skills</label>
+                        <input asp-for="TraitName" class="form-control form-control" />
+                        <span asp-validation-for="TraitName" class="text-danger"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" class="text-center">
                     <input type="submit" value="Save" class="btn btn-success" />
                 </td>

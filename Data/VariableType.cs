@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace LCARS.Data
+﻿namespace LCARS.Data
 {
-    [Flags]
     public enum VariableType
     {
         None = 0x00,

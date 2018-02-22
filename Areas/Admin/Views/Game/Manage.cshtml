@@ -41,6 +41,26 @@
                                     }
                                 }
                             });
+                    } else if ($(this).attr('axis') === 'Location') {
+                        const game = {
+                            LocationId: $(this).attr('id'),
+                            TextValue2: newValue
+                        };
+                        $.ajax('@Url.Action("UpdateValue", "Status", new {Area = ""})',
+                            {
+                                type: 'PUT',
+                                data: JSON.stringify(game),
+                                contentType: 'application/json',
+                                async: false,
+                                complete: function (jqXHR, textStatus) {
+                                    if (jqXHR.responseJSON === true) success = true;
+                                    else {
+                                        alert(
+                                            'Error communicating with the server. Error documented in browser console log.');
+                                        console.log(jqXHR.responseText);
+                                    }
+                                }
+                            });
                     } else {
                         const status = {
                             StatusId: $(this).attr('id'),
@@ -140,10 +160,13 @@
                         continue;
                     }
                     <div class="col-6">
-                        <h3>@location.Name</h3>
                         <div class="row">
                             <div class="col-7">
                                 <table class="table table-sm" id="table-location-@location.LocationId">
+                                    <tr>
+                                        <th class="border-top-0"><h4>@location.Name</h4></th>
+                                        <td class="grid-value text-right border-top-0" colspan="2" axis="Location" id="@location.LocationId">@location.Status</td>
+                                    </tr>
                                     @foreach (AttributeView attribute in location.Attributes)
                                     {
                                         <tr data-toggle="tooltip" data-placement="top" title="@attribute.Status.Time">

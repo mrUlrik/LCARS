@@ -1,0 +1,38 @@
+﻿@model LCARS.Models.Attribute
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container p-5">
+    <h1 class="text-info">Create Attribute</h1>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Abbreviated" class="control-label"></label>
+            <input asp-for="Abbreviated" class="form-control" />
+            <span asp-validation-for="Abbreviated" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SkillId" class="control-label">Skill</label>
+            <select asp-for="SkillId" class ="form-control" asp-items="ViewBag.SkillId"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="LocationId" class="control-label">Location</label>
+            <select asp-for="LocationId" class ="form-control" asp-items="ViewBag.LocationId"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="VariableType" class="control-label">Variable Type</label>
+            <select asp-for="VariableType" class="form-control" asp-items="Html.GetEnumSelectList(typeof(LCARS.Data.VariableType))"></select>
+            <span asp-validation-for="VariableType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </form>
+</div>

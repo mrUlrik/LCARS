@@ -16,13 +16,13 @@
                 <div class="col-4 ml-1 content">
                     <div class="row bg-danger">
                         <div class="col-auto px-1">{{bridge.name}}</div>
-                        <div class="col text-right px-1">5 LS | 1 XT</div>
+                        <div class="col text-right px-1">{{bridge.status}}</div>
                     </div>
                 </div>
                 <div class="col-5 ml-1 content">
                     <div class="row bg-danger">
                         <div class="col-auto px-1">{{science.abbreviated}}</div>
-                        <div class="col text-right px-1">5 LS | 1 XT</div>
+                        <div class="col text-right px-1">{{science.status}}</div>
                     </div>
                 </div>
             </div>
@@ -47,13 +47,13 @@
                 <div class="col-4 ml-1 content">
                     <div class="row bg-success">
                         <div class="col-auto px-1">{{communications.abbreviated}}</div>
-                        <div class="col text-right px-1">5 LS | 1 XT</div>
+                        <div class="col text-right px-1">{{communications.status}}</div>
                     </div>
                 </div>
                 <div class="col-5 ml-1 content">
                     <div class="row bg-success">
                         <div class="col-auto px-1">{{security.abbreviated}}</div>
-                        <div class="col text-right px-1">5 LS | 1 XT</div>
+                        <div class="col text-right px-1">{{security.status}}</div>
                     </div>
                 </div>
             </div>
@@ -79,13 +79,13 @@
                 <div class="col-4 ml-1 content">
                     <div class="row bg-secondary">
                         <div class="col-auto px-1">{{medical.abbreviated}}</div>
-                        <div class="col text-right px-1">5 LS | 1 XT</div>
+                        <div class="col text-right px-1">{{medical.status}}</div>
                     </div>
                 </div>
                 <div class="col-5 ml-1 content">
                     <div class="row bg-secondary">
                         <div class="col-auto px-1">{{logistics.abbreviated}}</div>
-                        <div class="col text-right px-1">5 LS | 1 XT</div>
+                        <div class="col text-right px-1">{{logistics.status}}</div>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                 <div class="col-4 ml-1 content">
                     <div class="row bg-info">
                         <div class="col-auto px-1">{{engineering.abbreviated}}</div>
-                        <div class="col text-right px-1">5 LS | 1 XT</div>
+                        <div class="col text-right px-1">{{engineering.status}}</div>
                     </div>
                 </div>
                 <div class="col-5 ml-1 content">
@@ -154,7 +154,6 @@
         </div>
         <div class="row mb-1">
             <div class="col-auto top-y-axis bg-info">Status</div>
-            <div class="col bg-success ml-1 button px-2"><router-link to="/drone">Drone</router-link></div>
             <div class="col bg-success ml-1 button px-2"><router-link to="/">Personal</router-link></div>
         </div>
         <div class="row mb-1">
@@ -176,6 +175,7 @@
                         "locationId": 0,
                         "name": "",
                         "abbreviated": "",
+                        "status": "",
                         "attributes": [
                             {
                                 "attributeId": 0,

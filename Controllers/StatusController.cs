@@ -23,6 +23,16 @@ namespace LCARS.Controllers
         [HttpPut]
         public bool UpdateValue([FromBody] Status input)
         {
+            if (input.LocationId != null)
+            {
+                var location = _db.Locations.SingleOrDefault(x => x.LocationId == input.LocationId);
+                if (location == null) return false;
+                location.Status = input.TextValue2;
+                _db.Locations.Update(location);
+                var records = _db.SaveChanges();
+                return records > 0;
+            }
+
             var status = _db.Statuses.FirstOrDefault(x => x.StatusId == input.StatusId);
             if (status == null) return false;
 
@@ -48,7 +58,7 @@ namespace LCARS.Controllers
         [HttpGet("locations")]
         public List<LocationView> GetLocations()
         {
-            return _db.Locations.Include(x => x.Attributes).Select(x => new LocationView{Abbreviated = x.Abbreviated, LocationId = x.LocationId, Name = x.Name, Attributes = x.Attributes.Select(y => new AttributeView {Abbreviated = y.Abbreviated, AttributeId = y.AttributeId, Name = y.Name, SkillId = y.SkillId}).ToList() }).ToList();
+            return _db.Locations.Include(x => x.Attributes).Select(x => new LocationView{Abbreviated = x.Abbreviated, LocationId = x.LocationId, Status = x.Status, Name = x.Name, Attributes = x.Attributes.Select(y => new AttributeView {Abbreviated = y.Abbreviated, AttributeId = y.AttributeId, Name = y.Name, SkillId = y.SkillId}).ToList() }).ToList();
         }
 
         [HttpGet("locations/{id}")]
@@ -66,6 +76,7 @@ namespace LCARS.Controllers
                 LocationId = x.LocationId,
                 Name = x.Name,
                 Abbreviated = x.Abbreviated,
+                Status = x.Status,
                 Attributes = x.Attributes.Select(y => new AttributeView
                 {
                     AttributeId = y.AttributeId,

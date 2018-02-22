@@ -128,7 +128,7 @@ namespace LCARS.Areas.Admin.Controllers
             game.Players = players;
 
             var locationAttributes = _db.Locations.Include(x => x.Attributes).ToList();
-            var teleports = _db.Teleports.Include(x => x.Player).Where(x => x.GameId == game.GameId && x.Round == game.Round).ToList();
+            var teleports = _db.Teleports.Include(x => x.Player).Where(x => x.GameId == game.GameId && x.Round == game.Round).GroupBy(x => x.Player).Select(x => x.OrderByDescending(y => y.Time).FirstOrDefault()).ToList();
             var statuses = _db.Statuses.Where(x => x.GameId == game.GameId && x.Round == game.Round)
                 .OrderByDescending(x => x.Time).GroupBy(x => new { x.AttributeId, x.LocationId })
                 .Select(x => x.FirstOrDefault()).ToList();
@@ -137,6 +137,7 @@ namespace LCARS.Areas.Admin.Controllers
             {
                 LocationId = x.LocationId,
                 Name = x.Name,
+                Status = x.Status,
                 Attributes = x.Attributes.Select(y => new AttributeView
                 {
                     AttributeId = y.AttributeId,
@@ -147,7 +148,7 @@ namespace LCARS.Areas.Admin.Controllers
             }).ToList();
             ViewBag.Locations = locations;
 
-            ViewBag.PlayerActions = _db.PlayerActions.Where(x => x.GameId == game.GameId && x.Round == game.Round).Include(x => x.Attribute).Include(x => x.Location).Include(x => x.Player).ThenInclude(x => x.Character).ToList();
+            ViewBag.PlayerActions = _db.PlayerActions.Where(x => x.GameId == game.GameId && x.Round == game.Round).Include(x => x.Attribute).Include(x => x.Location).Include(x => x.Player).ThenInclude(x => x.Character).GroupBy(x => x.Player).Select(x => x.OrderByDescending(t => t.Time).FirstOrDefault());
             
             return View(game);
         }

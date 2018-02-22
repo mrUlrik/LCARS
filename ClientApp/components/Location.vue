@@ -29,19 +29,19 @@
                 </div>
                 <div class="row mb-1">
                     <div class="col-auto top-y-axis bg-info"></div>
-                    <div class="col bg-warning ml-1 button" v-on:click="getActions(bridge.locationId)">{{bridge.name}}</div>
-                    <div class="col bg-warning ml-1 button" v-on:click="getActions(communications.locationId)">{{communications.name}}</div>
-                    <div class="col bg-warning ml-1 button" v-on:click="getActions(engineering.locationId)">{{engineering.name}}</div>
+                    <div class="col bg-warning ml-1 button" v-on:click="getActions(bridge.locationId)">{{bridge.abbreviated}}</div>
+                    <div class="col bg-warning ml-1 button" v-on:click="getActions(communications.locationId)">{{communications.abbreviated}}</div>
+                    <div class="col bg-warning ml-1 button" v-on:click="getActions(engineering.locationId)">{{engineering.abbreviated}}</div>
                 </div>
                 <div class="row mb-1">
                     <div class="col-auto top-y-axis bg-info"></div>
-                    <div class="col bg-success ml-1 button-wide" v-on:click="getActions(medical.locationId)">{{medical.name}}</div>
-                    <div class="col bg-success ml-1 button-wide" v-on:click="getActions(science.locationId)">{{science.name}}</div>
+                    <div class="col bg-success ml-1 button-wide" v-on:click="getActions(medical.locationId)">{{medical.abbreviated}}</div>
+                    <div class="col bg-success ml-1 button-wide" v-on:click="getActions(science.locationId)">{{science.abbreviated}}</div>
                 </div>
                 <div class="row mb-1">
                     <div class="col-auto top-y-axis bg-info"></div>
-                    <div class="col bg-secondary ml-1 button-wide" v-on:click="getActions(logistics.locationId)">{{logistics.name}}</div>
-                    <div class="col bg-secondary ml-1 button-wide" v-on:click="getActions(security.locationId)">{{security.name}}</div>
+                    <div class="col bg-secondary ml-1 button-wide" v-on:click="getActions(logistics.locationId)">{{logistics.abbreviated}}</div>
+                    <div class="col bg-secondary ml-1 button-wide" v-on:click="getActions(security.locationId)">{{security.abbreviated}}</div>
                 </div>
             </div>
             <div v-else-if="loaded === 2">
