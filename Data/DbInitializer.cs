@@ -208,9 +208,9 @@ namespace LCARS.Data
                 new Character
                 {
                     CharacterId = 16,
-                    Name = "Bobbi Johnson",
-                    Password = "8665",
-                    Role = "Helmsman",
+                    Name = "Weskira LaWorf",
+                    Password = "1976",
+                    Role = "Author Self Insert",
                     TraitName = "Frail Nerd",
                     TraitDescription = "In addition to your listed skills, you also have the Engineering skill. You cannot fight aliens directly, and are guaranteed to get injured if one's in your room.",
                     Tips = "You have three skills so you are a great master-of-all-trades... unless that trade is fighting. Stay the hell away from any room that contains aliens unless you're absolutely certain you can be protected.",
@@ -219,7 +219,8 @@ namespace LCARS.Data
                 new Character {CharacterId = 17, Name = "Ahsat Ray", Password = "3844", Role = "Security Guard"},
                 new Character {CharacterId = 18, Name = "Dr. Kleiner", Password = "5737", Role = "Lab Assistant"},
                 new Character {CharacterId = 19, Name = "Redd Shirt", Password = "5283", Role = "Junior Officer"},
-                new Character {CharacterId = 20, Name = "Fix McRunfast", Password = "3425", Role = "Engineer"}
+                new Character {CharacterId = 20, Name = "Fix McRunfast", Password = "3425", Role = "Engineer"},
+                new Character {CharacterId = 21, Name = "Bobbi Johnson", Password = "8665", Role = "Helmsman"}
             };
             db.Characters.AddRange(characters);
             db.SaveChanges();
@@ -260,7 +261,8 @@ namespace LCARS.Data
                 new CharacterSkill {CharacterSkillId = 32, CharacterId = 12, SkillId = 1},
                 new CharacterSkill {CharacterSkillId = 33, CharacterId = 13, SkillId = 3},
                 new CharacterSkill {CharacterSkillId = 34, CharacterId = 14, SkillId = 3},
-                new CharacterSkill {CharacterSkillId = 35, CharacterId = 15, SkillId = 6}
+                new CharacterSkill {CharacterSkillId = 35, CharacterId = 15, SkillId = 6},
+                new CharacterSkill {CharacterSkillId = 36, CharacterId = 21, SkillId = 3}
             };
             db.CharacterSkills.AddRange(characterSkills);
             db.SaveChanges();
@@ -333,57 +335,57 @@ namespace LCARS.Data
                 new CharacterObjective { CharacterObjectiveId = 24, CharacterId = 5, ObjectiveId = 14},
                 new CharacterObjective { CharacterObjectiveId = 25, CharacterId = 5, ObjectiveId = 15},
 
-                new CharacterObjective { CharacterObjectiveId = 26, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 27, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 28, CharacterId = 5, ObjectiveId = 9},
-                new CharacterObjective { CharacterObjectiveId = 29, CharacterId = 5, ObjectiveId = 16},
-                new CharacterObjective { CharacterObjectiveId = 30, CharacterId = 5, ObjectiveId = 17},
+                new CharacterObjective { CharacterObjectiveId = 26, CharacterId = 6, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 27, CharacterId = 6, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 28, CharacterId = 6, ObjectiveId = 9},
+                new CharacterObjective { CharacterObjectiveId = 29, CharacterId = 6, ObjectiveId = 16},
+                new CharacterObjective { CharacterObjectiveId = 30, CharacterId = 6, ObjectiveId = 17},
 
-                new CharacterObjective { CharacterObjectiveId = 31, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 32, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 33, CharacterId = 5, ObjectiveId = 18},
-                new CharacterObjective { CharacterObjectiveId = 34, CharacterId = 5, ObjectiveId = 19},
-                new CharacterObjective { CharacterObjectiveId = 35, CharacterId = 5, ObjectiveId = 20},
+                new CharacterObjective { CharacterObjectiveId = 31, CharacterId = 7, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 32, CharacterId = 7, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 33, CharacterId = 7, ObjectiveId = 18},
+                new CharacterObjective { CharacterObjectiveId = 34, CharacterId = 7, ObjectiveId = 19},
+                new CharacterObjective { CharacterObjectiveId = 35, CharacterId = 7, ObjectiveId = 20},
 
-                new CharacterObjective { CharacterObjectiveId = 36, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 37, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 38, CharacterId = 5, ObjectiveId = 21},
-                new CharacterObjective { CharacterObjectiveId = 39, CharacterId = 5, ObjectiveId = 22},
-                new CharacterObjective { CharacterObjectiveId = 40, CharacterId = 5, ObjectiveId = 23},
+                new CharacterObjective { CharacterObjectiveId = 36, CharacterId = 8, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 37, CharacterId = 8, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 38, CharacterId = 8, ObjectiveId = 21},
+                new CharacterObjective { CharacterObjectiveId = 39, CharacterId = 8, ObjectiveId = 22},
+                new CharacterObjective { CharacterObjectiveId = 40, CharacterId = 8, ObjectiveId = 23},
 
-                new CharacterObjective { CharacterObjectiveId = 41, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 42, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 43, CharacterId = 5, ObjectiveId = 21},
-                new CharacterObjective { CharacterObjectiveId = 44, CharacterId = 5, ObjectiveId = 24},
-                new CharacterObjective { CharacterObjectiveId = 45, CharacterId = 5, ObjectiveId = 25},
+                new CharacterObjective { CharacterObjectiveId = 41, CharacterId = 9, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 42, CharacterId = 9, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 43, CharacterId = 9, ObjectiveId = 21},
+                new CharacterObjective { CharacterObjectiveId = 44, CharacterId = 9, ObjectiveId = 24},
+                new CharacterObjective { CharacterObjectiveId = 45, CharacterId = 9, ObjectiveId = 25},
 
-                new CharacterObjective { CharacterObjectiveId = 46, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 47, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 48, CharacterId = 5, ObjectiveId = 18},
-                new CharacterObjective { CharacterObjectiveId = 49, CharacterId = 5, ObjectiveId = 30},
-                new CharacterObjective { CharacterObjectiveId = 50, CharacterId = 5, ObjectiveId = 27},
+                new CharacterObjective { CharacterObjectiveId = 46, CharacterId = 10, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 47, CharacterId = 10, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 48, CharacterId = 10, ObjectiveId = 18},
+                new CharacterObjective { CharacterObjectiveId = 49, CharacterId = 10, ObjectiveId = 30},
+                new CharacterObjective { CharacterObjectiveId = 50, CharacterId = 10, ObjectiveId = 27},
 
-                new CharacterObjective { CharacterObjectiveId = 51, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 52, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 53, CharacterId = 5, ObjectiveId = 6},
+                new CharacterObjective { CharacterObjectiveId = 51, CharacterId = 11, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 52, CharacterId = 11, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 53, CharacterId = 11, ObjectiveId = 6},
 
-                new CharacterObjective { CharacterObjectiveId = 54, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 55, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 56, CharacterId = 5, ObjectiveId = 21},
+                new CharacterObjective { CharacterObjectiveId = 54, CharacterId = 12, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 55, CharacterId = 12, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 56, CharacterId = 12, ObjectiveId = 21},
 
-                new CharacterObjective { CharacterObjectiveId = 57, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 58, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 59, CharacterId = 5, ObjectiveId = 9},
+                new CharacterObjective { CharacterObjectiveId = 57, CharacterId = 13, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 58, CharacterId = 13, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 59, CharacterId = 13, ObjectiveId = 9},
 
-                new CharacterObjective { CharacterObjectiveId = 60, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 61, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 62, CharacterId = 5, ObjectiveId = 3},
-                new CharacterObjective { CharacterObjectiveId = 63, CharacterId = 5, ObjectiveId = 28},
-                new CharacterObjective { CharacterObjectiveId = 64, CharacterId = 5, ObjectiveId = 29},
+                new CharacterObjective { CharacterObjectiveId = 60, CharacterId = 14, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 61, CharacterId = 14, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 62, CharacterId = 14, ObjectiveId = 3},
+                new CharacterObjective { CharacterObjectiveId = 63, CharacterId = 14, ObjectiveId = 28},
+                new CharacterObjective { CharacterObjectiveId = 64, CharacterId = 14, ObjectiveId = 29},
 
-                new CharacterObjective { CharacterObjectiveId = 65, CharacterId = 5, ObjectiveId = 1},
-                new CharacterObjective { CharacterObjectiveId = 66, CharacterId = 5, ObjectiveId = 2},
-                new CharacterObjective { CharacterObjectiveId = 67, CharacterId = 5, ObjectiveId = 18},
+                new CharacterObjective { CharacterObjectiveId = 65, CharacterId = 15, ObjectiveId = 1},
+                new CharacterObjective { CharacterObjectiveId = 66, CharacterId = 15, ObjectiveId = 2},
+                new CharacterObjective { CharacterObjectiveId = 67, CharacterId = 15, ObjectiveId = 18},
             };
             db.CharacterObjectives.AddRange(characterObjectives);
             db.SaveChanges();
@@ -414,8 +416,7 @@ namespace LCARS.Data
                 new Attribute { AttributeId = 22, Name = "Mining Drone Control", Abbreviated = "Mining Drone Control", SkillId = 3, LocationId = 7, VariableType = VariableType.Drones},
                 new Attribute { AttributeId = 23, Name = "Defend Self", Abbreviated = "Defend Self", VariableType = VariableType.None},
                 new Attribute { AttributeId = 24, Name = "Fight Aliens", Abbreviated = "Fight Aliens", SkillId = 6, VariableType = VariableType.None},
-                new Attribute { AttributeId = 25, Name = "Patch Station", Abbreviated = "Patch Station", VariableType = VariableType.None},
-                new Attribute { AttributeId = 26, Name = "Repair Station", Abbreviated = "Repair Station", SkillId = 2, VariableType = VariableType.None},
+                new Attribute { AttributeId = 26, Name = "Repair Station", Abbreviated = "Repair Station", VariableType = VariableType.Stations},
             };
             db.Attributes.AddRange(attributes);
             db.SaveChanges();

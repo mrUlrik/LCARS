@@ -36,8 +36,14 @@ namespace LCARS.Controllers
             return result;
         }
 
-        [HttpGet("{id}")]
-        public List<string> GetAction(VariableType id)
+        [HttpGet("location/{id}")]
+        public List<Attribute> GetStations(int id)
+        {
+            return _db.Attributes.Where(x => x.LocationId == id).ToList();
+        }
+
+        [HttpGet("{id}/{locationId?}")]
+        public List<string> GetAction(VariableType id, int? locationId = null)
         {
             switch (id)
             {
@@ -51,6 +57,8 @@ namespace LCARS.Controllers
                     return _db.Locations.Select(x => x.Name).ToList();
                 case VariableType.Crew:
                     return _db.Characters.Select(x => x.Name).ToList();
+                case VariableType.Stations:
+                    return _db.Attributes.Where(x => x.LocationId == locationId).Select(x => x.Name).ToList();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(id), id, null);
             }
@@ -59,7 +67,7 @@ namespace LCARS.Controllers
         [HttpPost("perform")]
         public bool PerformAction([FromBody] PlayerAction input)
         {
-            _db.Teleports.Add(new Teleport {GameId = input.GameId, LocationId = input.LocationId, PlayerId = input.PlayerId, Round = input.Round});
+            _db.Teleports.Add(new Teleport {GameId = input.GameId, LocationId = input.LocationId, PlayerId = input.PlayerId, Round = input.Round, Time = DateTime.Now});
             _db.SaveChanges();
             input.Time = DateTime.Now;
             _db.PlayerActions.Add(input);

@@ -6,6 +6,7 @@
         MultipleChoice = 0x01,
         Drones = 0x02,
         Locations = 0x04,
-        Crew = 0x08
+        Crew = 0x08,
+        Stations = 0x10
     }
 }

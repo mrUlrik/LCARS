@@ -17,7 +17,7 @@
                 <div class="col bg-secondary text-center text-uppercase ml-1 px-2">
                     <router-link to="/">Status</router-link>
                 </div>
-                <div class="col bg-danger text-center text-uppercase ml-1 px-2">
+                <div class="col bg-danger text-center text-uppercase ml-1 px-2" v-on:click="logoff">
                     Logoff
                 </div>
             </div>
@@ -353,6 +353,12 @@
             },
             selectPlayer: function (player) {
                 return player.playerId === this.playerId;
+            },
+            logoff: function () {
+                this.game = null;
+                this.player = null;
+                this.authorized = null;
+                this.loadGames();
             },
             refreshGame: function () {
                 let uri = ['/api/game', this.game.gameId].join('/');

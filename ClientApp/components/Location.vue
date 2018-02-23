@@ -53,7 +53,7 @@
                 </div>
                 <div v-for="action in actions" class="row mb-1">
                     <div class="col-auto top-y-axis bg-info"></div>
-                    <div class="col bg-success ml-1 button-wide" v-on:click="getOptions(action.attributeId, action.variableType)">{{action.name}}</div>
+                    <div class="col bg-success ml-1 button-wide" v-on:click="getOptions(action.attributeId, action.variableType, locationId)">{{action.name}}</div>
                 </div>
                 <div class="row mb-1">
                     <div class="col-auto top-y-axis bg-danger"></div>
@@ -175,7 +175,7 @@
                     .catch(error => { console.log(error); });
             },
             getActions: function (locationId) {
-                let uri = ['/api/actions/character', this.player.character.characterId, 'location', locationId].join('/');
+                let uri = ['/api/actions/character', this.player.playerId, 'location', locationId].join('/');
                 Axios.get(uri)
                     .then(response => {
                         if (response.data) {
@@ -186,8 +186,8 @@
                     })
                     .catch(error => { console.log(error); });
             },
-            getOptions: function (id, type) {
-                let uri = ['/api/actions', type].join('/');
+            getOptions: function (id, type, location = '') {
+                let uri = ['/api/actions', type, location].join('/');
                 Axios.get(uri)
                     .then(response => {
                         if (response.data) {
