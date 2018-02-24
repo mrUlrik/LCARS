@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using LCARS.Data;
 using LCARS.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite.Internal.IISUrlRewrite;
 using Microsoft.EntityFrameworkCore;
 using Attribute = LCARS.Models.Attribute;
 
@@ -25,17 +23,16 @@ namespace LCARS.Controllers
         [HttpGet("character/{playerId}/location/{locationId}")]
         public List<Attribute> GetActions(int playerId, int locationId)
         {
-            var character = _db.Players.Include(x => x.Character).ThenInclude(x => x.CharacterSkills).SingleOrDefault(x => x.PlayerId == playerId)?.Character;
+            var character = _db.Players.Include(x => x.Character).ThenInclude(x => x.CharacterSkills)
+                .SingleOrDefault(x => x.PlayerId == playerId)?.Character;
             if (character == null) return new List<Attribute>();
 
-            var attributes = _db.Attributes.Where(x => x.LocationId == null || x.LocationId == locationId);
+            var attributes = _db.Attributes
+                .Where(x => (x.LocationId == null || x.LocationId == locationId) &&
+                            (x.SkillId == null || character.CharacterSkills.Any(y => y.SkillId == x.SkillId)))
+                .OrderBy(x => x.Name).ToList();
 
-            var result = new List<Attribute>();
-            result.AddRange(attributes.Where(x => x.SkillId == null && x != null).OrderBy(x => x.Name).ToList());
-            foreach (var characterSkill in character.CharacterSkills)
-                result.Add(attributes.Where(x => x != null).SingleOrDefault(x => x.SkillId == characterSkill.SkillId));
-            var clean = result.Where(x => x != null).OrderBy(x => x.Name).ToList();
-            return clean;
+            return attributes;
         }
 
         [HttpGet("location/{id}")]
@@ -52,7 +49,7 @@ namespace LCARS.Controllers
                 case VariableType.None:
                     return new List<string>();
                 case VariableType.MultipleChoice:
-                    return new List<string>{ "A", "B", "C", "D" };
+                    return new List<string> {"A", "B", "C", "D"};
                 case VariableType.Drones:
                     return _db.Drones.Select(x => x.Name).ToList();
                 case VariableType.Locations:
@@ -69,7 +66,14 @@ namespace LCARS.Controllers
         [HttpPost("perform")]
         public bool PerformAction([FromBody] PlayerAction input)
         {
-            _db.Teleports.Add(new Teleport {GameId = input.GameId, LocationId = input.LocationId, PlayerId = input.PlayerId, Round = input.Round, Time = DateTime.Now});
+            _db.Teleports.Add(new Teleport
+            {
+                GameId = input.GameId,
+                LocationId = input.LocationId,
+                PlayerId = input.PlayerId,
+                Round = input.Round,
+                Time = DateTime.Now
+            });
             _db.SaveChanges();
             input.Time = DateTime.Now;
             _db.PlayerActions.Add(input);
