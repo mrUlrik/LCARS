@@ -18,25 +18,27 @@
                 <td>@Html.DisplayFor(modelItem => item.Role)</td>
                 <td>
                     <strong>Skills</strong>
-                    <ul class="list-inline">
+                    <ul class="list-unstyled">
                         @foreach (var skill in item.CharacterSkills)
                         {
-                            <li class="list-inline-item">@skill.Skill.Name</li>
+                            <li>@skill.Skill.Name</li>
                         }
                         
                     </ul>
                 </td>
                 <td>@Html.DisplayFor(modelItem => item.Password)</td>
-                <td>
+                <td style="width: 40%">
                     <h4 class="text-primary">@Html.DisplayFor(modelItem => item.TraitName)</h4>
                     @Html.DisplayFor(modelItem => item.TraitDescription)
                 </td>
                 <td>
                     <strong>Objectives</strong><br/>
-                    @foreach (var objective in item.CharacterObjectives)
-                    {
-                        <li class="list-inline-item">@objective.Objective.Title</li>
-                    }
+                    <ol>
+                        @foreach (var objective in item.CharacterObjectives)
+                        {
+                            <li>@objective.Objective.Title</li>
+                        }
+                    </ol>
                 </td>
             </tr>
             <tr>

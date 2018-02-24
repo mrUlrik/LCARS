@@ -22,7 +22,7 @@ namespace LCARS.Areas.Admin.Controllers
         // GET: Admin/Characters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Characters.Include(x => x.CharacterObjectives).ThenInclude(x => x.Objective).Include(x => x.CharacterSkills).ThenInclude(x => x.Skill).ToListAsync());
+            return View(await _context.Characters.Include(x => x.CharacterObjectives).ThenInclude(x => x.Objective).Include(x => x.CharacterSkills).ThenInclude(x => x.Skill).OrderBy(x => x.Name).ToListAsync());
         }
 
         // GET: Admin/Characters/Create
