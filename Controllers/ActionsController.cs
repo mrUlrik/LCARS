@@ -32,7 +32,7 @@ namespace LCARS.Controllers
 
             var result = new List<Attribute>();
             foreach (var characterSkill in character.CharacterSkills)
-                result = attributes.Where(x => x.SkillId == characterSkill.SkillId || x.SkillId == null).OrderBy(x => x.Name).ToList();
+                result.AddRange(attributes.Where(x => x.SkillId == characterSkill.SkillId || x.SkillId == null).OrderBy(x => x.Name).ToList());
             return result;
         }
 
