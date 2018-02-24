@@ -63,7 +63,7 @@ namespace LCARS.Data
                 {
                     CharacterId = 3,
                     Name = "Andromeda Galaxia",
-                    Password = "522",
+                    Password = "0522",
                     Role = "Diplomat",
                     Story = "Tina Johnson always wanted to go to space, but really only for one reason--to blow shit up. Unfortunately, due to an antagonistic, pacifist of a professor complaining about her blowing up a Andralli trading vessel (it had guns, I tell you), Tina never made it out of tactical university. However, as luck would have it, she stumbled upon \"How To Win An Alien's Heart in 30 Days\", a course-by-videotape instruction booklet. Changing her name to something more fitting, she acquired a job on the Exeter by masquerading as a diplomat. Tina--now Andromeda--would bring Space Diplomacy to the galaxy!",
                     Tips = "Your Trait isn't a typo. Hang out and liberally apply Space Diplomacy to any alien ships that show up. Your Tactical Officer (Rhett) will be working with you closely (but remember, his end goals might not align with yours!)",
@@ -74,7 +74,7 @@ namespace LCARS.Data
                 {
                     CharacterId = 4,
                     Name = "Bisquette Stickson",
-                    Password = "576",
+                    Password = "0576",
                     Role = "First Officer",
                     Story = "Bisquette Stickson was catapulted immediately into the First Officer position onto the Exeter, but found it lacking. The captain never let him strut his stuff--only ordered him to bring him coffee, rub his feet, read him bedtime stories. The service was almost too humiliating to bear, but Stickson stuck with it, knowing he'd one day command the Exeter for his sevice--that is, before he found out he was 4th in line to take over captaincy of the vessel. He'd just have to do something about that...",
                     Tips = "You'll need to convince the Research Director to change research for you. Try and keep Science crew working on research and the lab open. Meanwhile, hang out in the Bar and get juicy gossip on the crew.",
@@ -85,7 +85,7 @@ namespace LCARS.Data
                 {
                     CharacterId = 5,
                     Name = "Oxy Clean",
-                    Password = "224",
+                    Password = "0224",
                     Role = "Atmospherics Tech",
                     Story = "Oxy--known as Ms. Clean to her friends--is a graduate of the Deep Inhalation Society. Ever the diligant worker, Oxy always looked for ways to enhance the life support system--even for crew who didn't breathe oxygen! This is an equal opportunity spaceship, after all. However, her work was constantly being interrupted--after months of her workstation being taken over for \"basic diagnostics\" (so stupid; her system always worked perfectly!) Oxy devised the perfect distraction--with just a little short to the Slipdrive Core, Engineering would be too busy dealing with that to bother her. Too bad it ended up a bigger boom than expected...",
                     Tips = "You are better at working the Atmospherics Station--try and keep track of areas where the crew needs to go and juice it up with Atmoline. Try and keep your sabotage of the Core on the down-low!",
@@ -195,7 +195,7 @@ namespace LCARS.Data
                 {
                     CharacterId = 15,
                     Name = "B.E.E.F.",
-                    Password = "712",
+                    Password = "0712",
                     Role = "Android",
                     Story = "Being an android sucks. People always expect your positronic brain to not comprehend human emotion. That's because they're dumb meatbags full of flesh and organs, not superior artificial lifeforms like yourself. Still, they have some sort of curious nature to you, so keeping them alive is entertaining, at least--doubly so when they flip out about their navigation systems going offline after you uploaded a virus directly into its processing unit. That'll show them! ... wait, shit, you're on the ship, too.",
                     Tips = "You can pretty much cruise through this one; your trait lets you ignore some of the bad shit happening. Use your time to figure out who sabotaged the engine!",
@@ -286,7 +286,7 @@ namespace LCARS.Data
             var characterSkills = new[]
             {
                 new CharacterSkill { CharacterSkillId = 1, CharacterId = 1, SkillId = 4 },
-                new CharacterSkill { CharacterSkillId = 2, CharacterId = 1, SkillId = 2 },
+                new CharacterSkill { CharacterSkillId = 2, CharacterId = 1, SkillId = 3 },
                 new CharacterSkill { CharacterSkillId = 3, CharacterId = 2, SkillId = 3 },
                 new CharacterSkill { CharacterSkillId = 4, CharacterId = 2, SkillId = 2 },
                 new CharacterSkill { CharacterSkillId = 5, CharacterId = 3, SkillId = 5 },
