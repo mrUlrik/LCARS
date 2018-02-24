@@ -31,10 +31,11 @@ namespace LCARS.Controllers
             var attributes = _db.Attributes.Where(x => x.LocationId == null || x.LocationId == locationId);
 
             var result = new List<Attribute>();
-            result.AddRange(attributes.Where(x => x.SkillId == null).OrderBy(x => x.Name).ToList());
+            result.AddRange(attributes.Where(x => x.SkillId == null && x != null).OrderBy(x => x.Name).ToList());
             foreach (var characterSkill in character.CharacterSkills)
-                result.Add(attributes.SingleOrDefault(x => x.SkillId == characterSkill.SkillId));
-            return result.OrderBy(x => x.Name).ToList();
+                result.Add(attributes.Where(x => x != null).SingleOrDefault(x => x.SkillId == characterSkill.SkillId));
+            var clean = result.Where(x => x != null).OrderBy(x => x.Name).ToList();
+            return clean;
         }
 
         [HttpGet("location/{id}")]
